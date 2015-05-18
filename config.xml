@@ -4,7 +4,7 @@
         id        = "MiAlerta"
         version   = "1.0.0">
 
-    <name>Mi Presión</name>
+    <name>Mi Alerta</name>
 
     <description>
         Mi Alerta App, es una App que sirve como boton de panico para emeregencias
