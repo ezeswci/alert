@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Mi Alerta</title>
+     <script src="cordova.js" type="text/javascript"></script>
+    <script src="js/lib/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="js/datos.js" type="text/javascript"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="css/estilos.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+    <div class="header_publi"><div class="wrapper"><img src="img/banner.jpg" width="100%" /></div></div>
+    <div class="header_carga">
+        <div class="triangulo_inf2"></div>
+        <div class="titulo">Mi Alerta
+                <img class="i" src="img/I.jpg" width="25" height="25" />
+        </div>
+    </div>
+
+    <div id="cartel" class="cartel">
+        <div onclick="cleanForm();" id="x">
+            <!--<img src="img/x.jpg" width="35" height="35" />-->
+        </div>
+        <strong>¡Muy bien!</strong>
+        <br />Has cargado tus valores
+        <br />de presi&oacute;n arterial hoy.</div>
+
+    <div id="cartel2" class="cartel">
+        <div onclick="cerrarVentana();" id="x">
+            <img src="img/x.jpg" width="35" height="35" />
+        </div>
+        Los datos a cargar son la presi&oacute;n arterial m&aacute;xima o sist&oacute;lica (MAX) y la m&iacute;nima o diast&oacute;lica (MIN).<br /><br /><strong>Se expresan en mmHg; Ejemplo 12/7 debe cargarse como 120/70.</strong>
+        <br />
+        <br />El uso de esta aplicaci&oacute;n no implica en ning&uacute;n caso el reemplazo o la modificaci&oacute;n de cualquiera de las indicaciones que el m&eacute;dico te haya dado.</div>
+
+    <div id="fondo_negro"></div>
+
+    <div class="cuerpo2">
+        <!--        CALENDARIO / RELOJ      -->
+        
+        
+    </div>
+    <div class="footer">
+        <a href="datos.html">
+            <img src="img/datos_hover.jpg" width="135" height="135" />
+        </a>
+        <a href="estadisticas.html">
+            <img src="img/estadisticas.jpg" width="135" height="135" />
+        </a>
+        <a href="historial.html">
+            <img src="img/historial.jpg" width="135" height="135" />
+        </a>
+        <a href="mas.html">
+            <img src="img/mas.jpg" width="135" height="135" />
+        </a>
+    </div>
+</body>
+
+</html>
