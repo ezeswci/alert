@@ -673,6 +673,12 @@ a {
 	font-size: 12px;
 	text-align: left;
 }
+.historial_item .borrar {
+	font-size: 12px;
+	text-align: right;
+	margin-top:-10px;
+	margin-bottom:-5px;
+}
 /*
 @media only screen and ( max-width: 600px )  {
 
@@ -874,4 +880,10 @@ body {
 	height:auto;
 	overflow: visible;
 	max-height:50vh;
+}
+/* Agregados para alerta!! */
+.boton_panico{
+	margin-top:130px;
+	margin-left:15%;
+	width:70%;
 }

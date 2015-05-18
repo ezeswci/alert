@@ -156,3 +156,6 @@ document.documentElement.appendChild(iframe);
 window.frames[0].window.alert(txt);
 iframe.parentNode.removeChild(iframe);
 }
+function agregarContactos (){
+	alert("Con este boton se agregan contactos");
+}
