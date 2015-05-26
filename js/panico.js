@@ -3,7 +3,7 @@ function apretoPanico(elemento){
 	//alert(elemento.src);
 	if(elemento.src.indexOf("boton_empezar")!=-1){
 		elemento.src="img/boton_parar.jpg";
-		setTimeout(function(){navigator.app.exitApp();},3000)
+		//setTimeout(function(){navigator.app.exitApp();},3000)
 	}else{
 		desactivarPanico();
 	}
