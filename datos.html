@@ -21,21 +21,25 @@
         </div>
     </div>
 
-    <div id="cartel" class="cartel">
-        <div onclick="cleanForm();" id="x">
+    <div id="cartel" class="cartel" style="max-width:300px;">
+        <div onclick="cerrarTodo();" id="x">
             <!--<img src="img/x.jpg" width="35" height="35" />-->
         </div>
-        <strong>¡Muy bien!</strong>
-        <br />Has cargado tus valores
-        <br />de presi&oacute;n arterial hoy.</div>
+        <strong>INGRESE CLAVE</strong>
+        <input type="number" id="passing" maxlength="4" autocomplete="off" > 
+        <div class="botones">
+            <div onclick="validarPass();" class="boton">INGRESAR</div>
+            <div onclick="cerrarTodo();" class="boton">CANCELAR</div>
+        </div>
+        </div>
 
 
-    <div id="fondo_negro"></div>
+    <div id="fondo_negro" onclick="cerrarTodo();"></div>
 
     <div class="cuerpo2">
         <!--        CALENDARIO / RELOJ      -->
  <div class="main">
-    <div class="boton_panico"><img onclick="apretoPanico(this);" src="img/boton_empezar.jpg" width="100%" /> </div></div>
+    <div class="boton_panico"><img id="img_panic" onclick="apretoPanico(this);" src="img/boton_empezar.jpg" width="100%" /> </div></div>
     </div>
     <div class="footer">
         <a href="datos.html">
