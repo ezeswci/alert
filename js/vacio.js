@@ -17,15 +17,13 @@ function onDeviceReady() {
     //
     db = window.openDatabase(dbName, dbVersion, dbDisplayName, dbSize);
     db.transaction(initDB, errorCB, successCB);
-	db.transaction(initDB, errorCB, successCBM);
-	
 
 }
 
 // Init the table
 //
 function initDB(tx) {
-    tx.executeSql('CREATE TABLE IF NOT EXISTS HIST (id unique, max, min, note, dd, mm, yy, hs, minut)');
+    tx.executeSql('CREATE TABLE IF NOT EXISTS PASS (pass_id unique, pass_true, pass_false)');
 }
 
 // Transaction error callback
@@ -44,7 +42,7 @@ function successCB() {
 }
 
 function selectHist(tx) {
-    tx.executeSql('SELECT * FROM HIST', [], querySuccess, errorCB);
+    tx.executeSql('SELECT * FROM PASS', [], querySuccess, errorCB);
 }
 
 function querySuccess(tx, rs) {
@@ -53,6 +51,6 @@ function querySuccess(tx, rs) {
 	if(rs.rows.length>0){
 		window.location = "datos.html";
 	}else{
-		window.location = "datos.html";
+		window.location = "inicial.html";
 	}
 }

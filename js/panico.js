@@ -18,8 +18,8 @@ function cerrarTodo(){
 }
 function validarPass(){
 	valor=parseInt(document.getElementById("passing").value);
-	real=1234;
-	falso=4321;
+	real=window.passreal;
+	falso=window.passfalsa;
 	if(valor==real || valor==falso){
 		if(valor==real){
 			document.getElementById("passing").value=null;

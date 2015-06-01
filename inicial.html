@@ -6,6 +6,7 @@
     <title>Mi ALERTA</title>
      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <script src="js/lib/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="js/generaClave.js" type="text/javascript"></script>
     <link href="css/estilos.css" rel="stylesheet" type="text/css" />
 
 </head>
@@ -21,45 +22,118 @@
 
     <div class="cuerpo inicial">
         <div class="item">
-            <div class="texto_principal">Esta aplicaci&oacute;n te ayuda a controlar tu presi&oacute;n arterial. Est&aacute; demostrado que quien conoce sus valores de presi&oacute;n tiene m&aacute;s probabilidades de tenerla bajo control.</div>
+            <div class="texto_principal">Esta aplicaci&oacute;n es una herramienta de seguridad para utilizar en situaciones de emergencias. Con solo apretar un botón le envía un mensaje a los contactos con los que sincronices la App y a Emerphone con un aviso de que estas en riesgo y tu ubicación exacta. La App permite que quienes reciban el mensaje puedan seguir tu locación en un mapa y escuchar el audio de lo que estás viviendo.</div>
         </div>
-        <a href="datos.html">
+        <a>
             <div class="item menos">
-                <div class="texto">Cuando cargas tu presi&oacute;n arterial los valores se guardan con la fecha y hora actuales. Si lo necesitas, puedes editar la fecha y la hora del registro.
+                <div class="texto"> <b>Alerta:</b> Apreté el botón de alerta cuando estés en pánico y este automáticamente enviara el mensaje de alerta. Necesitaras configurar una clave para desactivar el mismo asi no cualquiera puede desactivar el Alerta. También se configura una clave señuelo por si alguien te fuerza a ingresar la clave. Esta simula el apagado pero la App sigue funcionando igual. 
                 </div>
                 <img src="img/index/datos.jpg" width="122" height="129" />
                 <br />
             </div>
         </a>
 
-        <a href="estadisticas.html">
+        <a>
             <div class="item menos">
-                <div class="texto">Puedes ver tus estad&iacute;sticas y los valores de presi&oacute;n arterial representados en un gr&aacute;fico en el per&iacute;odo de tiempo que elijas.</div>
+                <div class="texto"><b>Contactos:</b> Elije de tus contactos quienes recibirán el mensaje de alerta. El mismo se puede enviar por sms o mail. Este mensaje tendrá un link especial validado para que puedan ver tu ubicación actual. </div>
                 <img src="img/index/estadisticas.jpg" width="122" height="129" />
                 <br />
             </div>
         </a>
 
-        <a href="historial.html">
+        <a>
             <div class="item menos">
-                <div class="texto">Encontrar&aacute;s y podr&aacute;s compartir por mail el listado de todos los registros guardados.</div>
+                <div class="texto"><b>Llamada:</b> Activa la opción de llamada si quieres que escuchen el audio de lo que está sucediendo en donde tu estas. Esta opción llama a Emerophone quienes se encargan de seguir en detalle tu actividad. </div>
                 <img src="img/index/historial.jpg" width="122" height="129" />
                 <br />
             </div>
         </a>
 
-        <a href="mas.html">
+        <a>
             <div class="item last">
-                <div class="texto">¡No te olvides de controlar tu presi&oacute;n arterial! Si lo deseas puedes poner una alarma en tu calendario habitual e informarte sobre c&oacute;mo controlar tu presi&oacute;n arterial.</div>
+                <div class="texto"><b>Información:</b> En esta sección encontraras explicaciones del uso de las distintas funcionalidades de la app así como recomendar la App a amigos que la quieran utilizar o que creas que les puede servir. </div>
                 <img src="img/index/mas.jpg" width="122" height="129" />
                 <br />
             </div>
         </a>
 <br />
-        <a href="datos.html">
-            <div onclick='window.location = "datos.html";' class="boton inicio">COMENZAR</div>
-        </a>
+            <div onclick='generaClave();' class="boton inicio">COMENZAR</div>
     </div>
+    <div id="cartel" class="cartel">
+        <div onclick="cerrarTodo();" id="x">
+            <img src="img/x.jpg" width="35" height="35" />
+        </div>
+        <div class="titulo">INGRESO DE CLAVES</div>
+        <div class="content">
+        <p>Para utilizar la alarma tiene que ingresar una clave para apagar la misma.</p>
+        <p>También se le solicita al usuario que ingrese una clave señuelo. La misma simula el apagado de la Alarma. Esto es muy útil para situaciones donde el usuario se ve forzado a apagar la misma. </p>
+        </div>
+        <div class="botones">
+         	<div onclick="cerrarTodo();" class="boton">CANCELAR</div>
+            <div onclick="crearPass();" class="boton der">SIGUIENTE</div>
+        </div>
+        </div>
+        <div id="cartel2" class="cartel">
+        <div onclick="cerrarTodo();" id="x">
+            <!--<img src="img/x.jpg" width="35" height="35" />-->
+        </div>
+         <div class="titulo">INGRESE CLAVE VERDADERA</div>
+         <div class="content">
+        <p>La clave debe ser de 4 digitios.</p>
+        <table width="100%">
+        <tr>
+        <td width="20%">Clave:</td>
+        <td><input type="number" id="clave1" maxlength="4" autocomplete="off" ></td>
+        </tr>
+        <tr>
+        <td>Confirma:</td>
+        <td><input type="number" id="clave2" maxlength="4" autocomplete="off" ></td>
+        </tr>
+        </table>
+        </div>
+        <div class="botones">
+            <div onclick="cerrarTodo();" class="boton">CANCELAR</div>
+            <div onclick="crearPassAux();" class="boton der">INGRESAR</div>    
+        </div>
+        </div>
+        <div id="cartel3" class="cartel" >
+        <div onclick="cerrarTodo();" id="x">
+            <!--<img src="img/x.jpg" width="35" height="35" />-->
+        </div>
+         <div class="titulo">INGRESE CLAVE SEÑUELO</div>
+         <div class="content">
+        <p>La clave debe ser de 4 digitios.</p>
+        <table width="100%">
+        <tr>
+        <td width="20%">Clave:</td>
+        <td><input type="number" id="clave3" maxlength="4" autocomplete="off" ></td>
+        </tr>
+        <tr>
+        <td>Confirma:</td>
+        <td><input type="number" id="clave4" maxlength="4" autocomplete="off" ></td>
+        </tr>
+        </table>
+        </div>
+        <div class="botones">
+            <div onclick="cerrarTodo();" class="boton">CANCELAR</div>
+            <div onclick="crearPassFinal();" class="boton der">FINALIZAR</div>  
+        </div>
+        </div>
+        <div id="cartel4" class="cartel" style="z-index:99;">
+        <div class="titulo">ERROR</div>
+        <br />
+        	<div class="content">
+        		<div id="contAlert"></div>
+        	</div>
+         <br />
+        	<div class="botones">
+            	<div onclick="cerrarAviso();" class="boton_unico">ACEPTAR</div>
+        	</div>
+        </div>
+
+
+    <div id="fondo_negro" onclick="cerrarTodo();"></div>
+    <div id="fondo_negro2" onclick="cerrarAviso();" style="z-index:98;"></div>
 </body>
 
 </html>

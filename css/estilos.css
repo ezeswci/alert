@@ -451,57 +451,81 @@ a {
 	margin-right:auto;
 }
 
-#cartel {
-	width: 65%;
+#cartel, #cartel2, #cartel3, #cartel4  {
+	width:400px;
 	position: fixed;
 	padding-top: 10px;
-	padding-right: 10%;
+	padding-right: 50px;
 	padding-bottom: 10px;
-	padding-left: 10%;
+	padding-left: 50px;
 	z-index: 10;
 	background-color: #FFF;
-	font-size: 16px;
 	top: 20%;
-	margin-left: auto;
-	margin-right: auto;
-	left: 8%;
+	left: 50%;
+	transform: translateX(-200px);
 	visibility: hidden;
-	min-height: 105px;
 	overflow-y: auto;
+	-webkit-box-shadow: 4px 4px 4px 4px #3B3B3B;
+	box-shadow: 4px 4px 4px 4px #3B3B3B;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
 }
-#cartel #x {
+#cartel .titulo, #cartel2 .titulo, #cartel3 .titulo, #cartel4 .titulo{
+	width: 100%;
+	font-weight:bold;
+	text-align:center;
+	margin-top:10px;
+	margin-bottom:10px;
+	font-size:16px;
+}
+#cartel .content, #cartel2 .content, #cartel3 .content, #cartel4 .content{
+	width: 100%;
+	font-weight: lighter;
+	text-align: justify;
+	margin-top:10px;
+	margin-bottom:10px;
+	font-size:12px;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+#cartel .botones, #cartel2 .botones, #cartel3 .botones, #cartel4 .botones {
+	margin-top:10px;
+	padding-top:10px;
+	width: 400px;
+	border-top: solid #CCC 1px;
+}
+#cartel .botones .boton, #cartel2 .botones .boton, #cartel3 .botones .boton, #cartel4 .botones .boton {
+	width: 198px;
+	font-weight:bold;
+	display:block;
+	float: left;
+	text-align: center;
+	padding-top:10px;
+	padding-bottom:10px;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+  	-webkit-tap-highlight-color: transparent; /* For some Androids */
+}
+#cartel .botones .boton.der, #cartel2 .botones .boton.der, #cartel3 .botones .boton.der, #cartel4 .botones .boton.der {
+	border-left:1px #CCC solid;
+}
+#cartel .botones .boton_unico, #cartel2 .botones .boton_unico, #cartel3 .botones .boton_unico, #cartel4 .botones .boton_unico {
+	width: 400px;
+	display:block;
+	float: left;
+	text-align: center;
+	padding-top:10px;
+	padding-bottom:10px;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+  	-webkit-tap-highlight-color: transparent; /* For some Androids */
+}
+#cartel #x, #cartel2 #x, #cartel3 #x, #cartel4 #x {
 	float: right;
 	margin-top: -3px;
 	margin-right: -10%;
 	height: 35px;
 	width: 35px;
 }
-#cartel2 {
-	width: 65%;
-	position: fixed;
-	padding-top: 50px;
-	padding-right: 10%;
-	padding-bottom: 50px;
-	padding-left: 10%;
-	z-index: 10;
-	background-color: #FFF;
-	font-size: 14px;
-	top: 10%;
-	margin-left: auto;
-	margin-right: auto;
-	left: 8%;	
-	visibility: hidden;
-	overflow-y:auto;
-}
-#cartel2 #x {
-	float: right;
-	margin-top: -40px;
-	margin-right: -10%;
-	height: 35px;
-	width: 35px;
-}
-
-#fondo_negro {
+#fondo_negro, #fondo_negro2 {
 	background-color: #000;
 	height: 100%;
 	width: 100%;
@@ -738,32 +762,6 @@ a {
 	max-width:23px;
 }
 
-#cartel .botones {
-	bottom: 14px;
-	position: absolute;
-	left: 0px;
-	right: 0px;
-	width: 230px;
-	margin-right: auto;
-	margin-left: auto;
-}
-#cartel .botones .boton {
-	width: 100px;
-	float: left;
-	margin-right: 5px;
-	margin-left: 5px;
-	text-align: center;
-	background-color: #4F535C;
-	border: 1px solid #3D9993;
-	color: #FFF;
-	padding-top:10px;
-	padding-bottom:10px;
-	font-size: 14px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	-webkit-tap-highlight-color: rgba(0,0,0,0);
-  -webkit-tap-highlight-color: transparent; /* For some Androids */
-}
 #resumen_oculto {
 	display:none;
 }
