@@ -196,8 +196,9 @@ a {
 }
 .cuerpo .item img {
 	height: auto;
-	width: 16%;
+	width: 25%;
 	max-width: 122px;
+	float: left;
 }
 .cuerpo .item {
 	margin-top:10px;
@@ -217,8 +218,7 @@ a {
 
 .cuerpo .item .texto {
 	float: right;
-	height: auto;
-	width: 80%;
+	width: 70%;
 	margin-top: 10px;
 }
 
@@ -244,11 +244,20 @@ a {
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-tap-highlight-color: transparent; /* For some Androids */
 }
-.cuerpo .boton.inicio {
-	margin-top:0px;
-	margin-bottom:0px;
+.boton_1{
+	background-color: #4F535C;
+	border: 1px solid #29898D;
+	color: #FFF;
+	margin-top:10px;
+	font-size: 14px;
+	text-align: center;
+	width: 90px;
+	height:30px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent; /* For some Androids */
 }
-
 
 .------------------DATOS---------------{}
 .cuerpo2 {
@@ -452,17 +461,12 @@ a {
 }
 
 #cartel, #cartel2, #cartel3, #cartel4  {
-	width:400px;
+	width:90%;
 	position: fixed;
-	padding-top: 10px;
-	padding-right: 50px;
-	padding-bottom: 10px;
-	padding-left: 50px;
 	z-index: 10;
 	background-color: #FFF;
 	top: 20%;
-	left: 50%;
-	transform: translateX(-200px);
+	left: 5%;
 	visibility: hidden;
 	overflow-y: auto;
 	-webkit-box-shadow: 4px 4px 4px 4px #3B3B3B;
@@ -471,31 +475,38 @@ a {
 	border-radius: 10px;
 }
 #cartel .titulo, #cartel2 .titulo, #cartel3 .titulo, #cartel4 .titulo{
-	width: 100%;
+	width: 80%;
+	margin-left:10%;
+	margin-right:10%;
 	font-weight:bold;
 	text-align:center;
-	margin-top:10px;
+	margin-top:35px;
 	margin-bottom:10px;
 	font-size:16px;
 }
 #cartel .content, #cartel2 .content, #cartel3 .content, #cartel4 .content{
-	width: 100%;
+	width: 80%;
+	margin-left:10%;
+	margin-right:10%;
 	font-weight: lighter;
 	text-align: justify;
-	margin-top:10px;
-	margin-bottom:10px;
 	font-size:12px;
 	margin-top:20px;
 	margin-bottom:20px;
 }
+#cartel input, #cartel2 input, #cartel3 input, #cartel4 input{
+	width: 60%;
+}
 #cartel .botones, #cartel2 .botones, #cartel3 .botones, #cartel4 .botones {
 	margin-top:10px;
 	padding-top:10px;
-	width: 400px;
+	width: 80%;
+	margin-left:10%;
+	margin-right:10%;
 	border-top: solid #CCC 1px;
 }
 #cartel .botones .boton, #cartel2 .botones .boton, #cartel3 .botones .boton, #cartel4 .botones .boton {
-	width: 198px;
+	width: 48%;
 	font-weight:bold;
 	display:block;
 	float: left;
@@ -509,7 +520,7 @@ a {
 	border-left:1px #CCC solid;
 }
 #cartel .botones .boton_unico, #cartel2 .botones .boton_unico, #cartel3 .botones .boton_unico, #cartel4 .botones .boton_unico {
-	width: 400px;
+	width: 100%;
 	display:block;
 	float: left;
 	text-align: center;
@@ -520,8 +531,8 @@ a {
 }
 #cartel #x, #cartel2 #x, #cartel3 #x, #cartel4 #x {
 	float: right;
-	margin-top: -3px;
-	margin-right: -10%;
+	margin-top: 3px;
+	margin-left: -43px;
 	height: 35px;
 	width: 35px;
 }
