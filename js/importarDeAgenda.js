@@ -5,6 +5,7 @@ function agregarMailAgenda2(){
 	document.getElementById("cartel3").style.visibility="visible";
 }
 function agregarMailAgenda(){
+	alert("entre");
 	window.plugins.ContactPicker.chooseContact(function(contactInfo) {
     alert(contactInfo.displayName + " " + contactInfo.email + " "+ contactInfo.phoneNumber);
 });
