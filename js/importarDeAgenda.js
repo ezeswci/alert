@@ -17,11 +17,21 @@ function agregarMailAgenda(){
 		//alert("emails:"+contact.emails);
 		//alert("emails ar:"+contact.emails[0]);
 		//alert("nombre:"+contact.displayName);
-		alert("Todo:"+JSON.stringify(contact));
-		
-        console.log('The following contact has been selected:' + JSON.stringify(contact));
+		for(i=0;i<conctact.name.length;i++)
+		{
+			alert("Nombre"+contact.name[i].formatted);
+			alert("Nombre"+contact.name[i].givenName);
+		}for(i=0;i<conctact.phoneNumbers.length;i++)
+		{
+			alert("Nombre"+contact.phoneNumbers[i].value);
+		}for(i=0;i<conctact.emails.length;i++)
+		{
+			alert("Nombre"+contact.emails[i].value);
+		}
+		if(contact.nickname!="undefined"){alert("Nick:"+contact.nickname);}
+		//alert("Todo:"+JSON.stringify(contact));
     },function(err){
-        console.log('Error: ' + err);
+        alert('Error: ' + err);
     });
 }
 function agregarSMSAgenda(){
