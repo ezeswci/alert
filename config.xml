@@ -61,6 +61,7 @@
 	<gap:plugin name="com.inazar.datepicker" />
 	<gap:plugin name="com.badrit.contactpicker" version="0.1.0" />
 	<gap:plugin name="hu.dpal.phonegap.plugins.contactnumberpicker" version="0.1.1" />
+	<gap:plugin name="me.dusty.contacts" version="0.2.12" />
     <!--<gap:plugin name="com.plugin.datepicker" version="0.3.2" />
 	 End Third party plugins -->
 	<!-- Calendar plug in extenciones -->

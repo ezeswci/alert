@@ -6,11 +6,16 @@ function agregarMailAgenda2(){
 }
 function agregarMailAgenda(){
 	alert("entre");
-	window.plugins.ContactPicker.chooseContact(function(contactInfo) {
-    alert("Nombre:"+contactInfo.displayName);
-	alert("Numero:"+contactInfo.phoneNumber);
-	alert("Mail:"+contactInfo.email);
-});
+	//window.plugins.ContactPicker.chooseContact(function(contactInfo) {
+    //alert("Nombre:"+contactInfo.displayName);
+	//alert("Numero:"+contactInfo.phoneNumber);
+	//alert("Mail:"+contactInfo.email);
+//});
+	navigator.contacts.pickContact(function(contact){
+        console.log('The following contact has been selected:' + JSON.stringify(contact));
+    },function(err){
+        console.log('Error: ' + err);
+    });
 }
 function agregarSMSAgenda(){
 	alert("Entro sms");
