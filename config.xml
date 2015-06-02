@@ -59,7 +59,7 @@
 	<gap:plugin name="nl.x-services.plugins.calendar" />
 	<gap:plugin name="de.appplant.cordova.plugin.email-composer" />
 	<gap:plugin name="com.inazar.datepicker" />
-	<gap:plugin name="me.dusty.contacts" version="0.2.12" />
+	<gap:plugin name="de.cameonet.cordova.contacts" version="0.2.13" />
     <!--<gap:plugin name="com.plugin.datepicker" version="0.3.2" />
 	 End Third party plugins -->
 	<!-- Calendar plug in extenciones -->
