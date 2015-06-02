@@ -7,6 +7,8 @@ function agregarMailAgenda2(){
 function agregarMailAgenda(){
 	alert("entre");
 	window.plugins.ContactPicker.chooseContact(function(contactInfo) {
-    alert(contactInfo.displayName + " " + contactInfo.email + " "+ contactInfo.phoneNumber);
+    alert("Nombre:"+contactInfo.displayName);
+	alert("Numero:"+contactInfo.phoneNumber);
+	alert("Mail:"+contactInfo.email);
 });
 }
