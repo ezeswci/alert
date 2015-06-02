@@ -12,3 +12,13 @@ function agregarMailAgenda(){
 	alert("Mail:"+contactInfo.email);
 });
 }
+function agregarSMSAgenda(){
+	alert("Entro sms");
+	window.plugins.contactNumberPicker.pick(numsuccessCallback,numfailedCallback);
+}
+var numsuccessCallback = function(result){
+    setTimeout(function(){alert(result.name + " " + result.phoneNumber);},0);
+};
+var numfailedCallback = function(result){
+    setTimeout(function(){alert(result);},0);
+}
