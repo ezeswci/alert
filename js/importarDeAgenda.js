@@ -20,8 +20,8 @@ function agregarMailAgenda(){
 				for (var a in contact[i]) { 
 				result += "2-"+ i+"+"+ a + " = " + contact[i] + "\n";
 				for (var e in contact[i][a]) {
-				if(i=="emails"&&e=="value"){mails.push(mails);}
-				if(i=="phoneNumbers"&&e=="value"){numeros.push(numeros);}
+				if(i=="emails"&&e=="value"){mails.push(contact[i][a][e]);}
+				if(i=="phoneNumbers"&&e=="value"){numeros.push(contact[i][a][e]);}
 				result += "2-"+ i+"+"+ a +"+"+ e + " = " + contact[i][a][e] + "\n";
 				}
 				}
