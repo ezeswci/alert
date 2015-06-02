@@ -1,5 +1,5 @@
 // JavaScript Document
-function agregarMailAgenda2(nombre,mails,telefonos){
+function agregarDesdeLaAgenda2(nombre,mails,telefonos){
 	contadorImportados=0;
 	cualesImportar= new array();
 	for (var b in mails) {
@@ -31,7 +31,7 @@ function agregarDesdeLaAgenda(){
    //alert(result);
    //alert("display Name"+contact.displayName) 
 		//alert("Todo:"+JSON.stringify(contact));
-   agregarDesdeLaAgenda(contact.displayName,mails,numeros);
+   agregarDesdeLaAgenda2(contact.displayName,mails,numeros);
     },function(err){
         alert('Error: ' + err);
     });
