@@ -13,16 +13,26 @@ function agregarMailAgenda(){
 //});
 	navigator.contacts.pickContact(function(contact){
 		result="Datos:";
+		mails=new Array();
+		numeros=new Array();
 		 for (var i in contact) { 
       		result += "1-"+ i + " = " + contact[i] + "\n";
 				for (var a in contact[i]) { 
 				result += "2-"+ i+"+"+ a + " = " + contact[i] + "\n";
-				for (var e in contact[i][a]) { 
+				for (var e in contact[i][a]) {
+				if(i=="emails"&&e=="value"){mails.push(result);}
+				if(i=="phoneNumbers"&&e=="value"){numeros.push(result);}
 				result += "2-"+ i+"+"+ a +"+"+ e + " = " + contact[i][a][e] + "\n";
 				}
 				}
    			} 
-   alert(result);
+   //alert(result);
+   for (var b in mails) {
+	   alert("mail"+mails[b]); 
+   }
+   for (var c in numeros) {
+	   alert("numeros"+numeros[c]); 
+   }
    alert("display Name"+contact.displayName) 
 		//alert("Todo:"+JSON.stringify(contact));
     },function(err){
