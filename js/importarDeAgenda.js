@@ -12,11 +12,11 @@ function agregarMailAgenda(){
 	//alert("Mail:"+contactInfo.email);
 //});
 	navigator.contacts.pickContact(function(contact){
-		alert("numero:"+contact.phoneNumbers);
-		alert("numero ar:"+contact.phoneNumbers[0]);
-		alert("emails:"+contact.emails);
-		alert("emails ar:"+contact.emails[0]);
-		alert("nombre:"+contact.displayName);
+		//alert("numero:"+contact.phoneNumbers);
+		//alert("numero ar:"+contact.phoneNumbers[0]);
+		//alert("emails:"+contact.emails);
+		//alert("emails ar:"+contact.emails[0]);
+		//alert("nombre:"+contact.displayName);
 		alert("Todo:"+JSON.stringify(contact));
 		
         console.log('The following contact has been selected:' + JSON.stringify(contact));
