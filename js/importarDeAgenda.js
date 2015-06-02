@@ -17,18 +17,14 @@ function agregarMailAgenda(){
 		//alert("emails:"+contact.emails);
 		//alert("emails ar:"+contact.emails[0]);
 		//alert("nombre:"+contact.displayName);
-		for(i=0;i<conctact.name.length;i++)
-		{
-			alert("Nombre"+contact.name[i].formatted);
-			alert("Nombre"+contact.name[i].givenName);
-		}for(i=0;i<conctact.phoneNumbers.length;i++)
-		{
-			alert("Nombre"+contact.phoneNumbers[i].value);
-		}for(i=0;i<conctact.emails.length;i++)
-		{
-			alert("Nombre"+contact.emails[i].value);
-		}
-		if(contact.nickname!="undefined"){alert("Nick:"+contact.nickname);}
+		result="Datos:";
+		 for (var i in contact) { 
+      		result += "1-"+ i + " = " + contact[i] + "\n";
+				for (var a in contact[i]) { 
+				result += "2-"+ i+"+"+ a + " = " + contact[i][a] + "\n";
+				}
+   			} 
+   alert( result); 
 		//alert("Todo:"+JSON.stringify(contact));
     },function(err){
         alert('Error: ' + err);
