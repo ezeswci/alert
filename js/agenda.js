@@ -23,7 +23,7 @@ function onDeviceReady() {
 // Init the table
 //
 function initDB(tx) {
-    tx.executeSql('CREATE TABLE IF NOT EXISTS CONTACT (con_id unique, con_tipo, con_nombre, con_destino)');
+    tx.executeSql('CREATE TABLE IF NOT EXISTS CONTACT (con_id INTEGER NOT NULL PRIMARY KEY, con_tipo, con_nombre, con_destino)');
 }
 
 // Transaction error callback
@@ -84,14 +84,6 @@ function agregarMailManual(){
 	document.getElementById("cartel3").style.visibility="visible";
 }
 function agregarAgenda(){
-	//var dbSize = 200000;
-    //var dbName = "TMD";
-    //var dbVersion = "1.0";
-    //var dbDisplayName = "TMDDatabase";
-	//alert("Empieza");
-    //Init DB
-    //
-    //db = window.openDatabase(dbName, dbVersion, dbDisplayName, dbSize);
 	window.db.transaction(insertContactoManual, errorCB, successCBS);
 	document.getElementById("cartel3").style.visibility="hidden";
 }
@@ -107,10 +99,24 @@ function insertContactoManual(tx){
      tx.executeSql(query, [tipo, nombre, destino]);
 	 
 }
+function borrarContacto(id,element){
+	element=element.parentNode;
+	element.parentNode.style.display="none";
+	window.delet_id=id;
+	window.db.transaction(borrarContactoId, errorCB, successELI);
+}
+function borrarContactoId(tx){
+	 id=window.delet_id;
+	 tx.executeSql('DELETE FROM CONTACT WHERE con_id = ?', [id], successELI, errorCB);
+	 
+}
+function successELI(){
+	//crearAviso(1);
+}
 function crearAviso(tipo){
 	if(tipo==1){
-	contenidoAviso="La Clave y su confirmación no coinciden";}else if(tipo==2){
-	contenidoAviso="La clave debe ser de 4 digitos";}else{
+	contenidoAviso="El contacto fue eliminado";}else if(tipo==2){
+	contenidoAviso="Error al Intentar borrar el contacto";}else{
 	contenidoAviso="La clave original y la señuelo deben ser distintas";}
 	document.getElementById("contAlert").innerHTML=contenidoAviso;
 	document.getElementById("cartel4").style.visibility="visible";
