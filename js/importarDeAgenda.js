@@ -1,16 +1,18 @@
 // JavaScript Document
-function agregarMailAgenda2(){
+function agregarMailAgenda2(nombre,mails,telefonos){
+	contadorImportados=0;
+	cualesImportar= new array();
+	for (var b in mails) {
+	   texto +='<div class="historial_item"><div class="texto"><div class="fecha">Mail</div><div class="borrar" agregarDesdeAgenda(this,'+nombre+','+mails[b]+',Mail)>+Agregar</div><strong>'+nombre+' </strong>'+ mails[b]+'</div></div>';
+   }
+   for (var c in numeros) {
+	   texto +='<div class="historial_item"><div class="texto"><div class="fecha">Sms</div><div class="borrar" agregarDesdeAgenda(this,'+nombre+','+numeros[c]+',Sms)>+Agregar</div><strong>'+nombre+' </strong>'+ numeros[c]+'</div></div>'; 
+   }
 	document.getElementById("cartel2").style.visibility="hidden";
-	document.getElementById("cartel3").innerHTML='<div class="titulo">DATOS DE AGENDA</div><div class="content_export"><!-- Export --><div class="historial_item"><div class="texto"><div class="fecha">Alerta</div><div class="borrar">Eliminar</div><strong>Policia: </strong>*911</div></div><div class="historial_item"><div class="texto"><div class="fecha">Alerta</div><div class="borrar">Eliminar</div><strong>Policia: </strong>*911</div></div><div class="historial_item"><div class="texto"><div class="fecha">Alerta</div><div class="borrar">Eliminar</div><strong>Policia: </strong>*911</div></div><div class="historial_item"><div class="texto"><div class="fecha">Alerta</div><div class="borrar">Eliminar</div><strong>Policia: </strong>*911</div></div><div class="historial_item"><div class="texto"><div class="fecha">Alerta</div><div class="borrar">Eliminar</div><strong>Policia: </strong>*911</div></div><div class="historial_item"><div class="texto"><div class="fecha">Alerta</div><div class="borrar">Eliminar</div><strong>Policia: </strong>*911</div></div><div class="historial_item"><div class="texto"><div class="fecha">Alerta</div><div class="borrar">Eliminar</div><strong>Policia: </strong>*911</div></div><div class="historial_item"><div class="texto"><div class="fecha">Alerta</div><div class="borrar">Eliminar</div><strong>Policia: </strong>*911</div></div><div class="historial_item"><div class="texto"><div class="fecha">Alerta</div><div class="borrar">Eliminar</div><strong>Policia: </strong>*911</div></div><div class="historial_item"><div class="texto"><div class="fecha">Alerta</div><div class="borrar">Eliminar</div><strong>Policia: </strong>*911</div></div><div class="historial_item"><div class="texto"><div class="fecha">Alerta</div><div class="borrar">Eliminar</div><strong>Policia: </strong>*911</div></div><div class="historial_item"><div class="texto"><div class="fecha">Alerta</div><div class="borrar">Eliminar</div><strong>Policia: </strong>*911</div></div><!-- Export --></div><div class="botones"><div onclick="cerrarTodo();" class="boton">CANCELAR</div><div onclick="agregarAgenda();" class="boton der">AGREGAR</div></div>';
+	document.getElementById("cartel3").innerHTML='<div class="titulo">DATOS IMPORTADOS DE AGENDA</div><div class="content"><p>Haga click en “+ Agregar” en aquellas opciones que desee agregar a su listado de alertas. En el detalle podrá ver si es que lo recibe por SMS o por Mail.</p></div><div class="content_export">'+texto+'</div><div class="botones"><div onclick="cerrarTodo();" class="boton_unico">FINALIZAR</div></div>';
 	document.getElementById("cartel3").style.visibility="visible";
 }
-function agregarMailAgenda(){
-	alert("entre");
-	//window.plugins.ContactPicker.chooseContact(function(contactInfo) {
-    //alert("Nombre:"+contactInfo.displayName);
-	//alert("Numero:"+contactInfo.phoneNumber);
-	//alert("Mail:"+contactInfo.email);
-//});
+function agregarDesdeLaAgenda(){
 	navigator.contacts.pickContact(function(contact){
 		result="Datos:";
 		mails=new Array();
@@ -27,25 +29,25 @@ function agregarMailAgenda(){
 				}
    			} 
    //alert(result);
-   for (var b in mails) {
-	   alert("mail"+mails[b]); 
-   }
-   for (var c in numeros) {
-	   alert("numeros"+numeros[c]); 
-   }
-   alert("display Name"+contact.displayName) 
+   //alert("display Name"+contact.displayName) 
 		//alert("Todo:"+JSON.stringify(contact));
+   agregarDesdeLaAgenda(contact.displayName,mails,numeros);
     },function(err){
         alert('Error: ' + err);
     });
 }
-function agregarSMSAgenda(){
-	alert("Entro sms");
-	window.plugins.contactNumberPicker.pick(numsuccessCallback,numfailedCallback);
+function agregarDesdeAgenda (element,nombre,dato,tipo){
+	crearAviso(3);
+	window.adtipo=tipo;
+	window.adnombre=nombre;
+	window.addestino=dato;
+	element=element.parentNode;
+	element.parentNode.style.display="none";
+	window.db.transaction(insertContactoManualAgenda, errorCB, successCBS);
 }
-var numsuccessCallback = function(result){
-    setTimeout(function(){alert(result.name + " " + result.phoneNumber);},0);
-};
-var numfailedCallback = function(result){
-    setTimeout(function(){alert(result);},0);
+function insertContactoManualAgenda(tx){
+	 //alert("claves"+verdadera+"-fal-"+falsa);CONTACT (con_id unique, con_tipo, con_nombre, con_destino)
+	 var query = 'INSERT INTO CONTACT (con_tipo, con_nombre, con_destino) VALUES (?,?,?)';
+     tx.executeSql(query, [window.adtipo, window.adnombre, window.addestino]);
+	 
 }
