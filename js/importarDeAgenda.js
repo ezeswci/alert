@@ -1,14 +1,14 @@
 // JavaScript Document
 function agregarDesdeLaAgenda2(nombre,mails,telefonos){
-	alert("Entre a agregar agenda");
+	//alert("Entre a agregar agenda");
 	for (var b in mails) {
-	   texto +='<div class="historial_item"><div class="texto"><div class="fecha">Mail</div><div class="borrar" agregarDesdeAgenda(this,'+nombre+','+mails[b]+',Mail)>+Agregar</div><strong>'+nombre+' </strong>'+ mails[b]+'</div></div>';
+	   texto +='<div class="historial_item"><div class="texto"><div class="fecha">Mail</div><div class="borrar" agregarDesdeAgenda(this,'+nombre+',\''+mails[b]+'\',\'Mail\')>+Agregar</div><strong>'+nombre+' </strong>'+ mails[b]+'</div></div>';
    }
    for (var c in numeros) {
-	   texto +='<div class="historial_item"><div class="texto"><div class="fecha">Sms</div><div class="borrar" agregarDesdeAgenda(this,'+nombre+','+numeros[c]+',Sms)>+Agregar</div><strong>'+nombre+' </strong>'+ numeros[c]+'</div></div>'; 
+	   texto +='<div class="historial_item"><div class="texto"><div class="fecha">Sms</div><div class="borrar" agregarDesdeAgenda(this,'+nombre+',\''+numeros[c]+'\',\'Sms\')>+Agregar</div><strong>'+nombre+' </strong>'+ numeros[c]+'</div></div>'; 
    }
 	document.getElementById("cartel2").style.visibility="hidden";
-	document.getElementById("cartel3").innerHTML='<div class="titulo">DATOS IMPORTADOS DE AGENDA</div><div class="content"><p>Haga click en “+ Agregar” en aquellas opciones que desee agregar a su listado de alertas. En el detalle podrá ver si es que lo recibe por SMS o por Mail.</p></div><div class="content_export">'+texto+'</div><div class="botones"><div onclick="cerrarTodo();" class="boton_unico">FINALIZAR</div></div>';
+	document.getElementById("cartel3").innerHTML='<div class="titulo">DATOS IMPORTADOS DE AGENDA</div><div class="content"><p>Haga click en “+ Agregar” en aquellas opciones que desee agregar a su listado de alertas. En el detalle podrá ver si es que lo recibe por SMS o por Mail.</p></div><div class="content_export">'+texto+'</div><div class="botones"><div onclick="window.location=\'estadisticas.html\'" class="boton_unico">FINALIZAR</div></div>';
 	document.getElementById("cartel3").style.visibility="visible";
 }
 function agregarDesdeLaAgenda(){
@@ -27,7 +27,7 @@ function agregarDesdeLaAgenda(){
 				}
 				}
    			} 
-   alert(result);
+   //alert(result);
    //alert("display Name"+contact.displayName) 
 		//alert("Todo:"+JSON.stringify(contact));
    agregarDesdeLaAgenda2(contact.displayName,mails,numeros);
@@ -42,11 +42,14 @@ function agregarDesdeAgenda (element,nombre,dato,tipo){
 	window.addestino=dato;
 	element=element.parentNode;
 	element.parentNode.style.display="none";
-	window.db.transaction(insertContactoManualAgenda, errorCB, successCBS);
+	window.db.transaction(insertContactoManualAgenda, errorCB, successCBSF);
 }
 function insertContactoManualAgenda(tx){
 	 //alert("claves"+verdadera+"-fal-"+falsa);CONTACT (con_id unique, con_tipo, con_nombre, con_destino)
 	 var query = 'INSERT INTO CONTACT (con_tipo, con_nombre, con_destino) VALUES (?,?,?)';
      tx.executeSql(query, [window.adtipo, window.adnombre, window.addestino]);
 	 
+}
+function successCBSF(){
+	//No hace nada per es necesaria
 }
