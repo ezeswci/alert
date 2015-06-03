@@ -16,7 +16,7 @@ function onDeviceReady() {
     //
     window.db = window.openDatabase(dbName, dbVersion, dbDisplayName, dbSize);
     db.transaction(initDB, errorCB, successCB);
-	db.transaction(initDB, errorCB, successCBM);
+	//db.transaction(initDB, errorCB, successCBM);
 
 }
 
