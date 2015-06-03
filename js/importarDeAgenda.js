@@ -19,6 +19,7 @@ function agregarDesdeLaAgenda2(nombre,mails,telefonos){
 	document.getElementById("cartel3").style.visibility="visible";
 }
 function agregarDesdeLaAgenda(){
+	alert("va");
 	navigator.contacts.pickContact(function(contact){
 		result="Datos:";
 		mails=new Array();
