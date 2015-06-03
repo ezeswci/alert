@@ -3,6 +3,7 @@ function apretoPanico(elemento){
 	//alert(elemento.src);
 	if(elemento.src.indexOf("boton_empezar")!=-1){
 		elemento.src="img/boton_parar.jpg";
+		activarPanico();
 		//setTimeout(function(){navigator.app.exitApp();},3000)
 	}else{
 		desactivarPanico();
@@ -37,8 +38,13 @@ function validarPass(){
 }
 function detenerPanico(){
 	document.getElementById("img_panic").src="img/boton_empezar.jpg";
+	dejarDeTrasmitirGps();
 }
 function simularDetenerPanico(){
 	alert("Esto esta simulado");
 	document.getElementById("img_panic").src="img/boton_empezar.jpg";
+}
+function activarPanico(){
+	empezarATrasmitirGps();
+	enviarMensajes();
 }
