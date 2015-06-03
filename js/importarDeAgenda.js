@@ -14,7 +14,7 @@ function agregarDesdeLaAgenda2(nombre,mails,telefonos){
    for (var c in telefonos) {
 	   texto +='<div class="historial_item"><div class="texto"><div class="fecha">Sms</div><div class="borrar" onclick="agregarDesdeAgenda(this,\''+nombre+'\',\''+telefonos[c]+'\',\'Sms\')">+Agregar</div><strong>'+nombre+' </strong>'+ telefonos[c]+'</div></div>'; 
    }
-	document.getElementById("cartel2").style.visibility="hidden";
+	document.getElementById("cartel").style.visibility="hidden";
 	document.getElementById("cartel3").innerHTML='<div class="titulo">DATOS IMPORTADOS DE AGENDA</div><div class="content"><p>Haga click en “+ Agregar” en aquellas opciones que desee agregar a su listado de alertas. En el detalle podrá ver si es que lo recibe por SMS o por Mail.</p></div><div class="content_export">'+texto+'</div><div class="botones"><div onclick="window.location=\'estadisticas.html\'" class="boton_unico">FINALIZAR</div></div>';
 	document.getElementById("cartel3").style.visibility="visible";
 }
