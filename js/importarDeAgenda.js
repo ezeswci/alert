@@ -2,6 +2,7 @@
 function agregarDesdeLaAgenda2(nombre,mails,telefonos){
 	//alert("Entre a agregar agenda");
 	for (var b in mails) {
+		var texto=" ";
 	   texto +='<div class="historial_item"><div class="texto"><div class="fecha">Mail</div><div class="borrar" agregarDesdeAgenda(this,'+nombre+',\''+mails[b]+'\',\'Mail\')>+Agregar</div><strong>'+nombre+' </strong>'+ mails[b]+'</div></div>';
    }
    for (var c in numeros) {
