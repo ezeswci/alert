@@ -19,12 +19,15 @@ function querySuccessM(tx, rs) {
 	var mails= new Array();
     for (var i = 0; i < rs.rows.length; i++) {
         var p = rs.rows.item(i);
-		if(con_tipo=="Mail"){mails.push(p.con_destino);}else{
+		if(p.con_tipo=="Mail"){alert("mail a:"+p.con_destino);mails.push(p.con_destino);}else{alert("sms a:"+p.con_destino);
         eviarMensaje(p.con_id, p.con_tipo, p.con_nombre, p.con_destino);}
         //alert(element);
     }
 	if(mails.length>0){
+		alert("Lista mails");
 		enviarMails(mails);
+	}else{
+		alert("Lista mails vacia");
 	}
 }
 function eviarMensaje(con_id, con_tipo, con_nombre, con_destino){
