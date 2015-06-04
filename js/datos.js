@@ -22,6 +22,7 @@ function onDeviceReady() {
     //
     db = window.openDatabase(dbName, dbVersion, dbDisplayName, dbSize);
 	db.transaction(selectPass, errorCB);
+	window.base=db;
 }
 function errorCB(tx, err) {
     alert("Error processing SQL: " + err);

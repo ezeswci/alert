@@ -7,15 +7,7 @@ function enviarMensajesApagadoFalse(){
 	alert("Envio los mensajes de apagado Falso");
 }
 function salenMensajes() {
-	var dbSize = 200000;
-    var dbName = "TMD";
-    var dbVersion = "1.0";
-    var dbDisplayName = "TMDDatabase";
-	//alert("Empieza");
-    //Init DB
-    //
-    window.db = window.openDatabase(dbName, dbVersion, dbDisplayName, dbSize);
-    db.transaction(selectMsj, errorCB);
+    window.base.transaction(selectMsj, errorCB);
 }
 function selectMsj(tx) {
     tx.executeSql('SELECT * FROM CONTACT', [], querySuccessM, errorCB);
