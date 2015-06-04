@@ -15,7 +15,7 @@ function selectMsj(tx) {
 
 function querySuccessM(tx, rs) {
     // this will be empty since no rows were inserted.
-	alert("Arrancan mensajes");
+	//alert("Arrancan mensajes");
 	var mails= new Array();
     for (var i = 0; i < rs.rows.length; i++) {
         var p = rs.rows.item(i);
@@ -24,19 +24,19 @@ function querySuccessM(tx, rs) {
         //alert(element);
     }
 	if(mails.length>0){
-		alert("Lista mails");
+		//alert("Lista mails");
 		enviarMails(mails);
 	}else{
-		alert("Lista mails vacia");
+		//alert("Lista mails vacia");
 	}
 }
 function eviarMensaje(con_id, con_tipo, con_nombre, con_destino){
-	alert("Sale Sms");
+	//alert("Sale Sms");
 	message="Esto es un Mensaje de la App Tu Alerta entra en este link para seguirme: http://www.swci.com.ar/monitoreo/vehiculos_posicion_direct.php?gps="+device.uuid;
 		var options = {
             replaceLineBreaks: false, // true to replace \n by a new line, false by default
             android: {
-                intent: 'INTENT'  // send SMS with the native android SMS messaging
+                intent: ''  // send SMS with the native android SMS messaging
                 //intent: '' // send SMS without open any other app
             }}
 		var success = function () { };
@@ -47,7 +47,7 @@ function errorCB(){
 	// Por ahora no hace nada pero podria reactivar los mensajes
 }
 function enviarMails(destinos) {
-	alert("Sale Mail");
+	//alert("Sale Mail");
 	msj="Esto es un Mensaje de la App Tu Alerta entra en este link para seguirme: http://www.swci.com.ar/monitoreo/vehiculos_posicion_direct.php?gps="+device.uuid;
 	window.plugin.email.open({
     to:      destinos,

@@ -1,4 +1,14 @@
 // JavaScript Document
+//window.passestado; 0- apagado 1-prendido 2-simulado 
+function verificarPanico(){
+	if (window.passestado==1){
+		document.getElementById("img_panic").src="img/boton_parar.jpg";
+		activarPanico();
+		}else{
+			if(window.passestado==2){
+			empezarATrasmitirGps();
+		}}
+}
 function apretoPanico(elemento){
 	//alert(elemento.src);
 	if(elemento.src.indexOf("boton_empezar")!=-1){
@@ -39,12 +49,26 @@ function validarPass(){
 function detenerPanico(){
 	document.getElementById("img_panic").src="img/boton_empezar.jpg";
 	dejarDeTrasmitirGps();
+	estadoDePanico(0);
 }
 function simularDetenerPanico(){
 	alert("Esto esta simulado");
 	document.getElementById("img_panic").src="img/boton_empezar.jpg";
+	estadoDePanico(2);
 }
 function activarPanico(){
 	empezarATrasmitirGps();
 	enviarMensajes();
+	estadoDePanico(1);
+}
+function estadoDePanico(numero){
+	window.passestado=numero;
+	window.base.transaction(actualizarEstado, errorCB);
+}
+function actualizarEstado(tx) {
+    tx.executeSql("UPDATE PASS SET pass_estado ='" +window.passestado+"'  WHERE rowid =1  ;", [],   updatePass, errorPass);
+}
+function updatePass(){
+}
+function errorPass(){
 }

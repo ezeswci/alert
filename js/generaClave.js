@@ -109,8 +109,9 @@ function successCB() {
 function insertClave(tx){
 	 verdadera=window.clave;
 	 falsa=window.clave2;
+	 pass='0';
 	 //alert("claves"+verdadera+"-fal-"+falsa);
-	 var query = 'INSERT INTO PASS (pass_true, pass_false) VALUES (?,?)';
-     tx.executeSql(query, [verdadera, falsa]);
+	 var query = 'INSERT INTO PASS (pass_true, pass_false, pass_estado) VALUES (?,?,?)';
+     tx.executeSql(query, [verdadera, falsa, pass]);
 	 
 }
