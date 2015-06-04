@@ -7,6 +7,14 @@ Pantallas a tener en cuenta
 540 x 960
 */
 @import url("fonts.css");
+input {
+	height:30px;
+	font-size:16px;
+	color:#000;
+	-webkit-tap-highlight-color: #000;
+	margin-top:10px;
+	margin-bottom:10px;
+}
 body {
 	margin: 0px;
 	height: 100pv;
@@ -20,10 +28,6 @@ body {
 	padding-bottom: 16px;
 	overflow-x:hidden;
 	/* No background, just iOS:*/
--webkit-tap-highlight-color: transparent;
-
-/* No background iOS + Android:  */
--webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 /*
 @media only screen and ( max-width: 600px )  {
@@ -38,14 +42,9 @@ a {
 	text-decoration: none;
 	color: #717174;
 	outline: none;
-	-webkit-tap-highlight-color: rgba(0,0,0,0);
- 	 -webkit-tap-highlight-color: transparent; /* For some Androids */
-    -webkit-focus-ring-color: rgba(0, 0, 0, 0);
-	-webkit-focus-ring-color: transparent; /* For some Androids */
 }:focus {
         outline: 0;
         border:none;
-        color: rgba(0, 0, 0, 0);
     }
 
 
