@@ -60,6 +60,7 @@ function activarPanico(){
 	empezarATrasmitirGps();
 	enviarMensajes();
 	estadoDePanico(1);
+	document.location.href = 'tel:+01148127101';
 }
 function estadoDePanico(numero){
 	window.passestado=numero;
