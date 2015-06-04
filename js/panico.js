@@ -52,7 +52,7 @@ function detenerPanico(){
 	estadoDePanico(0);
 }
 function simularDetenerPanico(){
-	alert("Esto esta simulado");
+	//alert("Esto esta simulado");
 	document.getElementById("img_panic").src="img/boton_empezar.jpg";
 	estadoDePanico(2);
 }
@@ -60,7 +60,7 @@ function activarPanico(){
 	empezarATrasmitirGps();
 	enviarMensajes();
 	estadoDePanico(1);
-	document.location.href = 'tel:+01148127101';
+	//document.location.href = 'tel:+01148127101';
 }
 function estadoDePanico(numero){
 	window.passestado=numero;

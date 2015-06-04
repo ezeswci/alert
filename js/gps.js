@@ -347,7 +347,7 @@ var app = {
     }*/
 };
 function empezarATrasmitirGps(){
-	alert("arranca a trasmitir");
+	//alert("arranca a trasmitir");
 	app.initialize();
 //auth_token:  device.uuid
 }

@@ -1,6 +1,6 @@
 // JavaScript Document
 function enviarMensajes(){
-	alert("Envio los mensajes");
+	//alert("Envio los mensajes");
 	salenMensajes();
 }
 function enviarMensajesApagadoFalse(){
@@ -19,8 +19,7 @@ function querySuccessM(tx, rs) {
 	var mails= new Array();
     for (var i = 0; i < rs.rows.length; i++) {
         var p = rs.rows.item(i);
-		if(p.con_tipo=="Mail"){alert("mail a:"+p.con_destino);mails.push(p.con_destino);}else{alert("sms a:"+p.con_destino);
-        eviarMensaje(p.con_id, p.con_tipo, p.con_nombre, p.con_destino);}
+		if(p.con_tipo=="Mail"){mails.push(p.con_destino);}else{      eviarMensaje(p.con_id, p.con_tipo, p.con_nombre, p.con_destino);}
         //alert(element);
     }
 	if(mails.length>0){
