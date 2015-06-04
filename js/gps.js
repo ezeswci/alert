@@ -37,7 +37,7 @@ var app = {
     /**
     * @property {Boolean} aggressiveEnabled
     */
-    aggressiveEnabled: false,
+    aggressiveEnabled: true,
     /**
     * @property {Array} locations List of rendered map markers of prev locations
     */
@@ -45,10 +45,6 @@ var app = {
     /**
     * @private
     */
-    btnEnabled: undefined,
-    btnPace: undefined,
-    btnHome: undefined,
-    btnReset: undefined,
 
     // Application Constructor  
     initialize: function() {
@@ -144,7 +140,7 @@ var app = {
         var failureFn = function(error) {
             console.log('BackgroundGeoLocation error');
         };
-
+		/*
         // Only ios emits this stationary event
         bgGeo.onStationary(function(location) {
             if (!app.stationaryRadius) {
@@ -161,7 +157,7 @@ var app = {
             app.stationaryRadius.setCenter(center);
 
         });
-
+*/
         // BackgroundGeoLocation is highly configurable.
         bgGeo.configure(callbackFn, failureFn, {
             url: 'http://swci.com.ar/monitoreo/leer_telefono.php', // <-- Android ONLY:  your server url to send locations to
@@ -253,7 +249,7 @@ var app = {
             btnEnabled[0].innerHTML = 'Start';
             bgGeo.stop();
         }
-    },
+    },*/
     watchPosition: function() {
         var fgGeo = window.navigator.geolocation;
         if (app.watchId) {
@@ -280,14 +276,14 @@ var app = {
     * Cordova foreground geolocation watch has no stop/start detection or scaled distance-filtering to conserve HTTP requests based upon speed.  
     * You can't leave Cordova's GeoLocation running in background or it'll kill your battery.  This is the purpose of BackgroundGeoLocation:  to intelligently 
     * determine start/stop of device.
-    *//*
+    */
     onPause: function() {
         console.log('- onPause');
         app.stopPositionWatch();
     },
     /**
     * Once in foreground, re-engage foreground geolocation watch with standard Cordova GeoLocation api
-    *//*
+    */
     onResume: function() {
         console.log('- onResume');
         app.watchPosition();
@@ -295,7 +291,7 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         console.log('Received Event: ' + id);
-    },
+    },/*
     setCurrentLocation: function(location) {
         if (!app.location) {
             app.location = new google.maps.Marker({
@@ -351,6 +347,7 @@ var app = {
     }*/
 };
 function empezarATrasmitirGps(){
+	alert("arranca a trasmitir");
 app.initialize();
 //auth_token:  device.uuid
 }
