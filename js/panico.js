@@ -48,8 +48,9 @@ function validarPass(){
 }
 function detenerPanico(){
 	document.getElementById("img_panic").src="img/boton_empezar.jpg";
-	dejarDeTrasmitirGps();
 	estadoDePanico(0);
+	dejarDeTrasmitirGps();
+	
 }
 function simularDetenerPanico(){
 	//alert("Esto esta simulado");
@@ -58,8 +59,8 @@ function simularDetenerPanico(){
 }
 function activarPanico(){
 	empezarATrasmitirGps();
-	enviarMensajes();
 	estadoDePanico(1);
+	enviarMensajes();
 	//document.location.href = 'tel:+01148127101';
 }
 function estadoDePanico(numero){
