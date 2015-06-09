@@ -1,11 +1,11 @@
 // JavaScript Document
-function agregarDesdeLaAgenda(){
+function agregarDesdeLaAgenda3(){
 	nombre="Adrian Campanelli";
 	mails=new Array("AdrianCampanelli@realmedianetwork.com","mail2","mail3");
 	telefonos=new Array("tel1","tel2","tel3");
 	agregarDesdeLaAgenda2(nombre,mails,telefonos);
 }
-function agregarDesdeLaAgenda2(nombre,mails,telefonos){
+function agregarDesdeLaAgenda(nombre,mails,telefonos){
 	//alert("Entre a agregar agenda");
 	var texto=" ";
 	for (var b in mails) {
