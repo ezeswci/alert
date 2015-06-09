@@ -3,7 +3,7 @@ window.StopRecord=0;// En 0 No lo para, en 1 si
 function recordAudio(cual) {
 		alert("Entro a Grabar");
         var src = "myrecording.amr";
-        var mediaRec = new Media(src, onSuccess, onError);
+        var mediaRec = new Media(src, onSuccessGrab, onErrorGrab);
 
         // Record audio
         mediaRec.startRecord();
@@ -18,7 +18,8 @@ function recordAudio(cual) {
 				alert("Paro de grabar");
 				mediaRec.play();
 				alert("mando archivo");
-				uploadFile(mediaRec);
+				alert("ubicacion:"+mediaRec.fullPath + "nombre:"+mediaFile.name);
+				uploadFile(mediaRec.fullPath, mediaFile.name);
 				//mediaRec.release();
 				//if(cual>2){
 					//window.StopRecord=1;
@@ -29,25 +30,25 @@ function recordAudio(cual) {
             }
         }, 1000);
     }
-    function onSuccess() {
-        //console.log("recordAudio():Audio Success");
+    function onSuccessGrab() {
+        alert("recordAudio():Audio Success");
     }
     // onError Callback
     //
-    function onError(error) {
+    function onErrorGrab(error) {
         alert('code: '    + error.code    + '\n' +
               'message: ' + error.message + '\n');
     }
  // a ver si o agarra
     // Upload files to server
-    function uploadFile(mediaFile) {
+    function uploadFile(camino,nombre) {
 		alert("Manda archivo");
-		alert("ubicacion:"+mediaFile.fullPath);
+		alert("ubicacion:"+camino);
 		mediaFile.play();
 		alert("reproduce archivo");
         var ft = new FileTransfer(),
-            path = mediaFile.fullPath,
-            name = mediaFile.name;
+            path = camino,
+            name = nombre;
 
         ft.upload(path,
             "http://www.swci.com.ar/audio/upload.php", ///ACÁ va el php
