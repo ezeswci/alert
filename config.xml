@@ -68,6 +68,7 @@
 	<gap:plugin name="com.inazar.datepicker" />
 	<gap:plugin name="de.cameonet.cordova.contacts" version="0.2.13" />
 	<gap:plugin name="com.cordova.plugins.sms"/>
+	<gap:plugin name="nl.x-services.plugins.socialsharing" version="4.3.8" />
     <!--<gap:plugin name="com.plugin.datepicker" version="0.3.2" />
 	 End Third party plugins -->
 	<!-- Calendar plug in extenciones -->
