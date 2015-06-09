@@ -5,7 +5,7 @@ function agregarDesdeLaAgenda3(){
 	telefonos=new Array("tel1","tel2","tel3");
 	agregarDesdeLaAgenda2(nombre,mails,telefonos);
 }
-function agregarDesdeLaAgenda(nombre,mails,telefonos){
+function agregarDesdeLaAgenda2(nombre,mails,telefonos){
 	//alert("Entre a agregar agenda");
 	var texto=" ";
 	for (var b in mails) {
@@ -18,7 +18,7 @@ function agregarDesdeLaAgenda(nombre,mails,telefonos){
 	document.getElementById("cartel3").innerHTML='<div class="titulo">DATOS IMPORTADOS DE AGENDA</div><div class="content"><p>Haga click en “+ Agregar” en aquellas opciones que desee agregar a su listado de alertas. En el detalle podrá ver si es que lo recibe por SMS o por Mail.</p></div><div class="content_export">'+texto+'</div><div class="botones"><div onclick="window.location=\'estadisticas.html\'" class="boton_unico">FINALIZAR</div></div>';
 	document.getElementById("cartel3").style.visibility="visible";
 }
-function agregarDesdeLaAgenda3(){
+function agregarDesdeLaAgenda(){
 	navigator.contacts.pickContact(function(contact){
 		result="Datos:";
 		mails=new Array();

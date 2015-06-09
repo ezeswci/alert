@@ -58,7 +58,7 @@ function createEvent() {
 }
 //<button onclick="window.plugins.socialsharing.share('Message, subject, image and link', 'The subject', 'https://www.google.nl/images/srpr/logo4w.png', 'http://www.x-services.nl')">message, subject, image and link</button>
 function sendMail() {
-	window.plugins.socialsharing.share('¡Te recomiendo esta aplicación!', 'Quiero compartir contigo esta aplicación para que puedas controlar tu presión arterial. Descarga la app Mi Presión desde el store de tu teléfono. Aca va el Link');
+	window.plugins.socialsharing.share('¡Te recomiendo esta aplicación!', 'Quiero compartir contigo esta aplicación para  aumentar tu seguridad. Descarga la app Mi Alerta desde el store de tu teléfono. Aca va el Link');
 }
 function abrirVentana(ventana) {
     if (ventana == "1") {
