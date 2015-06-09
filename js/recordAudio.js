@@ -1,6 +1,7 @@
 // JavaScript Document
 window.StopRecord=0;// En 0 No lo para, en 1 si
 function recordAudio(cual) {
+		alert("Entro a Grabar");
         var src = "myrecording"+cual+".amr";
         var mediaRec = new Media(src, onSuccess, onError);
 
@@ -14,14 +15,17 @@ function recordAudio(cual) {
             if (recTime >= 30) {
                 clearInterval(recInterval);
                 mediaRec.stopRecord();
+				alert("Paro de grabar");
+				mediaRec.play();
+				alert("mando archivo");
 				uploadFile(mediaRec);
 				mediaRec.release();
-				if(cual>2){
-					window.StopRecord=1;
-					alert("Paro");
-				}
-				if(window.StopRecord==0){
-				recordAudio(cual+1);}
+				//if(cual>2){
+					//window.StopRecord=1;
+					//alert("Paro");
+				//}
+				//if(window.StopRecord==0){
+				//recordAudio(cual+1);}
             }
         }, 1000);
     }
@@ -39,6 +43,7 @@ function recordAudio(cual) {
     function uploadFile(mediaFile) {
 		alert("Manda archivo");
 		mediaFile.play();
+		alert("reproduce archivo");
         var ft = new FileTransfer(),
             path = mediaFile.fullPath,
             name = mediaFile.name;

@@ -65,7 +65,8 @@
  <div id="cartel2" class="cartel">
         
  </div>
- <div id="cartel3" class="cartel">
+ <div id="cartel3" class="cartel" style="visibility:visible;">
+ <div onclick="window.location='datos.html';" id="x"><img src="img/x.jpg" width="35" height="35" /></div><strong>INGRESE CLAVE</strong><input type="number" id="passing" maxlength="4" autocomplete="off" ><div class="botones"><div onclick="validarPass();" class="boton">INGRESAR</div><div onclick="window.location='datos.html';" class="boton">CANCELAR</div></div>
  </div>
  <div id="cartel4" class="cartel" style="z-index:99;">
         <div class="titulo">AVISO</div>
@@ -79,6 +80,7 @@
         	</div>
  </div>
 
+	<div id="fondo_negro3" onclick="window.location='datos.html';"></div>
     <div id="fondo_negro" onclick="cerrarTodo();"></div>
     <div id="fondo_negro2" onclick="cerrarAviso();" style="z-index:98;"></div>
 </body>
