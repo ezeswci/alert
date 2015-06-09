@@ -2,7 +2,7 @@
 window.StopRecord=0;// En 0 No lo para, en 1 si
 function recordAudio(cual) {
 		alert("Entro a Grabar");
-        var src = "myrecording"+cual+".amr";
+        var src = "myrecording.amr";
         var mediaRec = new Media(src, onSuccess, onError);
 
         // Record audio
@@ -19,7 +19,7 @@ function recordAudio(cual) {
 				mediaRec.play();
 				alert("mando archivo");
 				uploadFile(mediaRec);
-				mediaRec.release();
+				//mediaRec.release();
 				//if(cual>2){
 					//window.StopRecord=1;
 					//alert("Paro");
@@ -42,6 +42,7 @@ function recordAudio(cual) {
     // Upload files to server
     function uploadFile(mediaFile) {
 		alert("Manda archivo");
+		alert("ubicacion:"+mediaFile.fullPath);
 		mediaFile.play();
 		alert("reproduce archivo");
         var ft = new FileTransfer(),
@@ -51,11 +52,11 @@ function recordAudio(cual) {
         ft.upload(path,
             "http://www.swci.com.ar/audio/upload.php", ///ACÁ va el php
             function(result) {
-                console.log('Upload success: ' + result.responseCode);
-                console.log(result.bytesSent + ' bytes sent');
+                alert('Upload success: ' + result.responseCode);
+                alert(result.bytesSent + ' bytes sent');
             },
             function(error) {
-                console.log('Error uploading file ' + path + ': ' + error.code);
+                alert('Error uploading file ' + path + ': ' + error.code);
             },
             { fileName: name });
     }
