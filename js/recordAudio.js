@@ -1,29 +1,44 @@
 // JavaScript Document
-function captureSuccess(mediaFiles) {
-        var i, len;
-        for (i = 0, len = mediaFiles.length; i < len; i += 1) {
-            uploadFile(mediaFiles[i]);
-        }
-    }
+window.StopRecord=0;// En 0 No lo para, en 1 si
+function recordAudio(cual) {
+        var src = "myrecording"+cual+".amr";
+        var mediaRec = new Media(src, onSuccess, onError);
 
-    // Called if something bad happens.
-    //
-    function captureError(error) {
-        var msg = 'An error occurred during capture: ' + error.code;
-        navigator.notification.alert(msg, null, 'Uh oh!');
-    }
+        // Record audio
+        mediaRec.startRecord();
 
-    // A button will call this function
+        // Stop recording after 30 sec
+        var recTime = 0;
+        var recInterval = setInterval(function() {
+            recTime = recTime + 1;
+            if (recTime >= 30) {
+                clearInterval(recInterval);
+                mediaRec.stopRecord();
+				uploadFile(mediaRec);
+				mediaRec.release();
+				if(cual>2){
+					window.StopRecord=1;
+					alert("Paro");
+				}
+				if(window.StopRecord==0){
+				recordAudio(cual+1);}
+            }
+        }, 1000);
+    }
+    function onSuccess() {
+        //console.log("recordAudio():Audio Success");
+    }
+    // onError Callback
     //
-    function captureAudio() {
-        // Launch device audio recording application,
-        // allowing user to capture up to 2 audio clips
-		alert("Arranco a Grabar");
-        navigator.device.capture.captureAudio(captureSuccess, captureError, {limit: 2});
+    function onError(error) {
+        alert('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');
     }
 
     // Upload files to server
     function uploadFile(mediaFile) {
+		alert("Manda archivo");
+		mediaFile.play();
         var ft = new FileTransfer(),
             path = mediaFile.fullPath,
             name = mediaFile.name;

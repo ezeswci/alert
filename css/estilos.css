@@ -558,7 +558,17 @@ a {
 	top: 0px;
 	opacity: 0.5;
 }
-
+#fondo_negro3 {
+	background-color: #000;
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	visibility: visible;
+	z-index: 5;
+	left: 0px;
+	top: 0px;
+	opacity: 0.95;
+}
 .------------------ESTADISTICAS---------------{}
 .header.blanco {
 	background-color: #FFFFFF;

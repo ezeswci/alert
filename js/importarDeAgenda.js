@@ -61,3 +61,15 @@ function insertContactoManualAgenda(tx){
 function successCBSF(){
 	//No hace nada per es necesaria
 }
+function validarPass(){
+	valor=parseInt(document.getElementById("passing").value);
+	real=window.passreal;
+	falso=window.passfalsa;
+	if(valor==real || valor==falso){
+			document.getElementById("passing").value=null;
+			cerrarTodo();
+	}else{
+		document.getElementById("passing").value=null;
+		crearAviso(4);
+	}
+}

@@ -3,7 +3,9 @@ $(document).ready(onDeviceReady);
 //Global database
 //
 window.db;
-
+window.passreal;
+window.passfalsa;
+window.passestado;
 // PhoneGap is ready
 //
 function onDeviceReady() {
@@ -15,9 +17,27 @@ function onDeviceReady() {
     //Init DB
     //
     window.db = window.openDatabase(dbName, dbVersion, dbDisplayName, dbSize);
-    db.transaction(initDB, errorCB, successCB);
+   	window.db.transaction(initDB, errorCB, successCB);
+	//window.db.transaction(selectPass, errorCB);
 	//db.transaction(initDB, errorCB, successCBM);
 
+}
+function selectPass(tx) {
+    tx.executeSql('SELECT * FROM PASS', [], querySuccessPass, errorCB);
+}
+
+function querySuccessPass(tx, rs) {
+    // this will be empty since no rows were inserted.
+
+    for (var i = 0; i < rs.rows.length; i++) {
+        var p = rs.rows.item(i);
+        //var element = parseHistSelect(p.min, p.max, p.note, p.dd, p.mm, p.yy, p.hs, p.minut);
+	//alert("verdadera: "+p.pass_true);
+	//alert("Falsa: "+p.pass_false);
+	window.passreal=p.pass_true;
+	window.passfalsa=p.pass_false;
+	window.passestado=p.pass_estado;
+    }
 }
 
 // Init the table
@@ -39,6 +59,7 @@ function successCB() {
     //Select query
     //
     db.transaction(selectHist, errorCB);
+	db.transaction(selectPass, errorCB);
 }
 
 function selectHist(tx) {
@@ -107,8 +128,9 @@ function successELI(){
 function crearAviso(tipo){
 	if(tipo==1){
 	contenidoAviso="El contacto fue eliminado";}else if(tipo==2){
-	contenidoAviso="Error al Intentar borrar el contacto";}else{
-	contenidoAviso="El contacto fue Agregado";}
+	contenidoAviso="Error al Intentar borrar el contacto";}else if(tipo==3){
+	contenidoAviso="El contacto fue Agregado";}else if(tipo==4){
+	contenidoAviso="La clave no es correcta, intente nuevamente";}
 	document.getElementById("contAlert").innerHTML=contenidoAviso;
 	document.getElementById("cartel4").style.visibility="visible";
 	document.getElementById("fondo_negro2").style.visibility="visible";
@@ -123,6 +145,7 @@ function cerrarTodo(){
 	document.getElementById("cartel3").style.visibility="hidden";
 	document.getElementById("fondo_negro").style.visibility="hidden";
 	document.getElementById("fondo_negro2").style.visibility="hidden";
+	document.getElementById("fondo_negro3").style.visibility="hidden";
 }
 function agregarAgenda(){
 	window.db.transaction(insertContactoManual, errorCB, successCBS);
