@@ -1,5 +1,5 @@
 // JavaScript Document
-function agrmegarDesdeLaAgenda3(){
+function agregarDesdeLaAgenda(){
 	nombre="Adrian Campanelli";
 	mails=new Array("AdrianCampanelli@realmedianetwork.com","mail2","mail3");
 	telefonos=new Array("tel1","tel2","tel3");
@@ -9,16 +9,16 @@ function agregarDesdeLaAgenda2(nombre,mails,telefonos){
 	//alert("Entre a agregar agenda");
 	var texto=" ";
 	for (var b in mails) {
-	   texto +='<div class="historial_item"><div class="texto"><div class="fecha">Mail</div><div class="borrar" onclick="agregarDesdeAgenda(this,\''+nombre+'\',\''+mails[b]+'\',\'Mail\')">+Agregar</div><strong>'+nombre+' </strong>'+ mails[b]+'</div></div>';
+	   texto +='<div class="historial_item"><div class="texto"><div class="fecha">Mail</div><div class="borrar" onclick="agregarDesdeAgenda(this,\''+nombre+'\',\''+mails[b]+'\',\'Mail\')">+Agregar</div><div class="contacto"><strong>'+nombre+' </strong></br>'+ mails[b]+'</div></div></div>';
    }
    for (var c in telefonos) {
-	   texto +='<div class="historial_item"><div class="texto"><div class="fecha">Sms</div><div class="borrar" onclick="agregarDesdeAgenda(this,\''+nombre+'\',\''+telefonos[c]+'\',\'Sms\')">+Agregar</div><strong>'+nombre+' </strong>'+ telefonos[c]+'</div></div>'; 
+	   texto +='<div class="historial_item"><div class="texto"><div class="fecha">Sms</div><div class="borrar" onclick="agregarDesdeAgenda(this,\''+nombre+'\',\''+telefonos[c]+'\',\'Sms\')">+Agregar</div><div class="contacto"><strong>'+nombre+' </strong></br>'+ telefonos[c]+'</div></div></div>'; 
    }
 	document.getElementById("cartel").style.visibility="hidden";
 	document.getElementById("cartel3").innerHTML='<div class="titulo">DATOS IMPORTADOS DE AGENDA</div><div class="content"><p>Haga click en “+ Agregar” en aquellas opciones que desee agregar a su listado de alertas. En el detalle podrá ver si es que lo recibe por SMS o por Mail.</p></div><div class="content_export">'+texto+'</div><div class="botones"><div onclick="window.location=\'estadisticas.html\'" class="boton_unico">FINALIZAR</div></div>';
 	document.getElementById("cartel3").style.visibility="visible";
 }
-function agregarDesdeLaAgenda(){
+function agregarDesdeLaAgenda3(){
 	navigator.contacts.pickContact(function(contact){
 		result="Datos:";
 		mails=new Array();

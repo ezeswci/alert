@@ -111,7 +111,7 @@ function insertClave(tx){
 	 falsa=window.clave2;
 	 pass='0';
 	 //alert("claves"+verdadera+"-fal-"+falsa);
-	 var query = 'INSERT INTO PASS (pass_true, pass_false, pass_estado) VALUES (?,?,?)';
-     tx.executeSql(query, [verdadera, falsa, pass]);
+	 var query = 'INSERT INTO PASS (pass_true, pass_false, pass_estado,call) VALUES (?,?,?,?)';
+     tx.executeSql(query, [verdadera, falsa, pass, pass]);
 	 
 }

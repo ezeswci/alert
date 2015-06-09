@@ -20,7 +20,7 @@
     <a href="http://emergencias.com.ar/" target="new"><div class="header_publi"><div class="wrapper"><img src="img/banner.jpg" width="100%" /></div></div></a>
     <div class="header_carga">
         <div class="triangulo_inf2"></div>
-        <div class="titulo" onClick="recordAudio(0);">MI ALERTA
+        <div class="titulo">MI ALERTA
         </div>
     </div>
 
@@ -28,9 +28,10 @@
         <div onclick="cerrarTodo();" id="x">
             <img src="img/x.jpg" width="35" height="35" />
         </div>
-        <strong>INGRESE CLAVE</strong>
-        <input type="number" id="passing" maxlength="4" autocomplete="off" > 
-        <div class="botones">
+        <div class="titulo">INGRESO CLAVE</div>
+        <div class="content">
+        <p>Esta acción requiere que ingrese su clave</p>
+ <p><strong>CLAVE: </strong><input type="number" id="passing" maxlength="4" autocomplete="off" ></p></div>
             <div onclick="validarPass();" class="boton">INGRESAR</div>
             <div onclick="cerrarTodo();" class="boton">CANCELAR</div>
         </div>

@@ -23,7 +23,7 @@ function onDeviceReady() {
 // Init the table
 //
 function initDB(tx) {
-    tx.executeSql('CREATE TABLE IF NOT EXISTS PASS (pass_id unique, pass_true, pass_false, pass_estado)');
+    tx.executeSql('CREATE TABLE IF NOT EXISTS PASS (pass_id unique, pass_true, pass_false, pass_estado, call)');
 }
 
 // Transaction error callback

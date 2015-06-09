@@ -78,7 +78,7 @@ function querySuccess(tx, rs) {
     }
 }
 function parseContacto(con_id, con_tipo, con_nombre, con_destino){
-    return '<div class="historial_item"><div class="texto"><div class="fecha">'+con_tipo+'</div><div onclick="borrarContacto('+con_id+',this)" class="borrar">Eliminar</div><strong>'+con_nombre+': </strong>'+con_destino+'</div></div>';
+    return '<div class="historial_item"><div class="texto"><div class="fecha">'+con_tipo+'</div><div onclick="borrarContacto('+con_id+',this)" class="borrar">Eliminar</div><div class="contacto"><strong>'+con_nombre+': </strong>'+con_destino+'</div></div></div>';
 }
 function agregarContactos (){
 	document.getElementById("cartel").style.visibility="visible";
