@@ -8,6 +8,61 @@
     <script src="js/lib/jquery-1.11.1.min.js" type="text/javascript"></script>
     <script src="js/historial.js" type="text/javascript"></script>
     <script src="js/llamada.js" type="text/javascript"></script>
+    <script type="text/javascript" charset="utf-8" src="json2.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+	function startAudioRec() {
+  var src = "rec.amr";
+  audioRec = new Media(src, recordOnSuccess, recordOnError);
+  audioRec.startRecord();
+  circleBlink();
+  console.log("test");
+
+}
+function recordOnError() {}
+function recordOnSuccess() {}
+
+var visible = true;
+var recInterval;
+
+function circleBlink() {
+  recInterval = setInterval(blink, 1000);
+  function blink() {
+    var circle = document.getElementById('recCircle');
+    if (visible) {
+      circle.setAttribute("style", "visibility: hidden;");
+      visible = false;
+    } else {
+      circle.setAttribute("style", "visibility: visible;");
+      visible = true;
+    }
+  }
+}
+function uploadFile(mediaFile) {
+        var ft = new FileTransfer(),
+            path = mediaFile.fullPath,
+            name = mediaFile.name;
+
+        ft.upload(path,
+            "www.swci.com.ar/audio/upload.php",
+            function(result) {
+                console.log('Upload success: ' + result.responseCode);
+                console.log(result.bytesSent + ' bytes sent');
+            },
+            function(error) {
+                console.log('Error uploading file ' + path + ': ' + error.code);
+            },
+            { fileName: name });
+    }
+function stopAudioRec() {
+  audioRec.stopRecord();
+  clearInterval(recInterval);
+  document.getElementById("recCircle").setAttribute("style", "visibility: hidden;");
+  audioRec.release();
+  uploadFile("rec.amr");
+}
+
+    </script>
     <link href="css/estilos.css" rel="stylesheet" type="text/css" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
@@ -28,6 +83,8 @@
        
         <!--        CALENDARIO / RELOJ      -->
  <div class="main">
+ <button onClick="startAudioRec();">Grabar</button> <br>
+		<button onClick="stopAudioRec();">Parar</button> <br>
     <div class="boton_panico"><img onclick="apretoLlamada(this);" src="img/llamada_desactivada.jpg" width="100%" /> </div></div>
     </div>
 
