@@ -38,7 +38,7 @@ function recordAudio(cual) {
         alert('code: '    + error.code    + '\n' +
               'message: ' + error.message + '\n');
     }
-
+ // a ver si o agarra
     // Upload files to server
     function uploadFile(mediaFile) {
 		alert("Manda archivo");
