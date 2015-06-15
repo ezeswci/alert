@@ -54,7 +54,32 @@ function uploadFile(camino,nombre) {
             },
             { fileName: name });
     }
+function buscar(){
+	var filepath = Environment.getExternalStorageDirectory().getPath();     
+    file = new File(filepath,"");        
+    var src=file.getAbsolutePath()+"recdos.amr"; 
+	alert("Manda archivo");
+		//alert("ubicacion:"+camino);
+		//mediaFile.play();
+		//alert("reproduce archivo");
+        var ft = new FileTransfer(),
+            path = "recdos.amr",
+            name = "recdos.amr";
+
+        ft.upload(path,
+            "http://www.swci.com.ar/audio/upload.php", ///ACÁ va el php
+            function(result) {
+                alert('Upload success: ' + result.responseCode);
+                alert(result.bytesSent + ' bytes sent');
+				window.audioRec.release();
+            },
+            function(error) {
+                alert('Error uploading file ' + path + ': ' + error.code);
+            },
+            { fileName: name });
+}
 </script>
 <button onClick="startAudioRec()">Start</button>
 <button onClick="stopAudioRec()">Stop</button>
+<button onClick="buscar()">Mandar</button>
 </body>
