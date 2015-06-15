@@ -67,23 +67,36 @@ function buscar(){
 		//mediaFile.play();
 		//alert("reproduce archivo");
 }
-function sendFile(src){
-        var ft = new FileTransfer(),
-            path = src,
-            name = "recdos.amr";
+function sendFile(src) {
+            var options = new FileUploadOptions();
+			options.fileKey = "audio";
+			options.fileName = src.substr(src.lastIndexOf('/') + 1);
+			options.mimeType = "audio/AMR";
+			options.httpMethod = "POST";
+			options.chunkedMode = false;
 
-        ft.upload(path,
-            "http://www.swci.com.ar/audio/upload.php", ///ACÁ va el php
-            function(result) {
-                alert('Upload success: ' + result.responseCode);
-                alert(result.bytesSent + ' bytes sent');
-				window.audioRec.release();
-            },
-            function(error) {
-                alert('Error uploading file ' + path + ': ' + error.code);
-            },
-            { fileName: name });
-}
+            var params = {};
+            params.value1 = "test";
+            params.value2 = "param";
+
+            options.params = params;
+
+            var ft = new FileTransfer();
+            ft.upload(src, encodeURI("http://www.swci.com.ar/audio/upload.php"), win, fail, options);
+        }
+
+        function win(r) {
+			alert("Se mando");
+            alert("Code = " + r.responseCode);
+            alert("Response = " + r.response);
+            alert("Sent = " + r.bytesSent);
+        }
+
+        function fail(error) {
+            alert("An error has occurred: Code = " + error.code);
+            alert("upload error source " + error.source);
+            alert("upload error target " + error.target);
+        }
 function checkIfFileExists(path){
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
         fileSystem.root.getFile(path, { create: false }, fileExists, fileDoesNotExist);
