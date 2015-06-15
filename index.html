@@ -6,14 +6,17 @@
 <script>
 function startAudioRec() {
   alert("Empiezo a grabar");
-  var src = "rec1.amr"; //ESTE ARCHIVO LO GUARDA EN EL DEVICE STORAGE
+  var src = "recdos.amr"; //ESTE ARCHIVO LO GUARDA EN EL DEVICE STORAGE
   window.audioRec = new Media(src, recordOnSuccess, recordOnError);
   window.audioRec.startRecord();
   //circleBlink();
   alert("test");
 }
 function recordOnError() { alert("Audio Error");}
-function recordOnSuccess() { alert("Audio Genial");}
+function recordOnSuccess() { alert("Audio Genial");
+alert("ubicacion:"+window.audioRec.fullPath + "nombre:"+window.audioRec.name);
+uploadFile(window.audioRec.fullPath, window.audioRec.name);
+}
 
 var visible = true;
 var recInterval;
@@ -22,9 +25,9 @@ function stopAudioRec() {
   window.audioRec.stopRecord();
   //clearInterval(window.recInterval);
   //document.getElementById("recCircle").setAttribute("style", "visibility: hidden;");
-  alert("ubicacion:"+window.audioRec.fullPath + "nombre:"+window.audioRec.name);
-				uploadFile(window.audioRec.fullPath, window.audioRec.name);
-  window.audioRec.release();
+  //alert("ubicacion:"+window.audioRec.fullPath + "nombre:"+window.audioRec.name);
+				//uploadFile(window.audioRec.fullPath, window.audioRec.name);
+  //window.audioRec.release();
   ///YO INTENTE DESDE ACÁ UPLOADEAR EL ARCHIVO
 }
 function uploadFile(camino,nombre) {
@@ -41,6 +44,7 @@ function uploadFile(camino,nombre) {
             function(result) {
                 alert('Upload success: ' + result.responseCode);
                 alert(result.bytesSent + ' bytes sent');
+				window.audioRec.release();
             },
             function(error) {
                 alert('Error uploading file ' + path + ': ' + error.code);
