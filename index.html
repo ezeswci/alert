@@ -14,8 +14,8 @@ function startAudioRec() {
 }
 function recordOnError() { alert("Audio Error");}
 function recordOnSuccess() { alert("Audio Genial");
-alert("ubicacion:"+window.audioRec.fullPath + "nombre:"+window.audioRec.name);
-uploadFile(window.audioRec.fullPath, window.audioRec.name);
+window.audioRec.release();
+uploadFile();
 }
 
 var visible = true;
@@ -31,13 +31,16 @@ function stopAudioRec() {
   ///YO INTENTE DESDE ACÁ UPLOADEAR EL ARCHIVO
 }
 function uploadFile(camino,nombre) {
+	//var filepath = Environment.getExternalStorageDirectory().getPath();     
+    //file = new File(filepath," ");        
+	//var src=file.getAbsolutePath()+"recdos.amr";
 		alert("Manda archivo");
 		//alert("ubicacion:"+camino);
 		//mediaFile.play();
 		//alert("reproduce archivo");
         var ft = new FileTransfer(),
-            path = camino,
-            name = nombre;
+            path = "recdos.amr",
+            name = "recdos.amr";
 
         ft.upload(path,
             "http://www.swci.com.ar/audio/upload.php", ///ACÁ va el php
