@@ -104,7 +104,8 @@ function checkIfFileExists(path){
 }
 function fileExists(fileEntry){
     alert("File " + fileEntry.fullPath + " exists! Te lo mando al server");
-	sendFile(fileEntry.fullPath);
+	alert("Lo que le tiene que pasar para uploadear es esto: "+fileEntry.toURL());
+	sendFile(fileEntry.toURL());
 }
 function fileDoesNotExist(){
     alert("file does not exist");
