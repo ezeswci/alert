@@ -6,7 +6,7 @@
 <script>
 function startAudioRec() {
   alert("Empiezo a grabar");
-  var src = "rec.amr"; //ESTE ARCHIVO LO GUARDA EN EL DEVICE STORAGE
+  var src = "rec1.amr"; //ESTE ARCHIVO LO GUARDA EN EL DEVICE STORAGE
   window.audioRec = new Media(src, recordOnSuccess, recordOnError);
   window.audioRec.startRecord();
   //circleBlink();
@@ -22,8 +22,8 @@ function stopAudioRec() {
   window.audioRec.stopRecord();
   //clearInterval(window.recInterval);
   //document.getElementById("recCircle").setAttribute("style", "visibility: hidden;");
-  alert("ubicacion:"+window.audioRec.fullPath + "nombre:"+mediaFile.name);
-				uploadFile(window.audioRec.fullPath, mediaFile.name);
+  alert("ubicacion:"+window.audioRec.fullPath + "nombre:"+window.audioRec.name);
+				uploadFile(window.audioRec.fullPath, window.audioRec.name);
   window.audioRec.release();
   ///YO INTENTE DESDE ACÁ UPLOADEAR EL ARCHIVO
 }
