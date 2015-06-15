@@ -51,6 +51,10 @@ var app = {
         this.bindEvents();
         //google.maps.event.addDomListener(window, 'load', app.initializeMap);
     },
+	initialize: function() {
+        this.bindEvents();
+        //google.maps.event.addDomListener(window, 'load', app.initializeMap);
+    },
     /*initializeMap: function() {
         
         var mapOptions = {
