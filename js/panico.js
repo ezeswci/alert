@@ -61,6 +61,7 @@ function activarPanico(){
 	empezarATrasmitirGps();
 	estadoDePanico(1);
 	enviarMensajes();
+	if(window.mandaAudio==1){startAudioRec();}
 	//document.location.href = 'tel:+01148127101';
 }
 function estadoDePanico(numero){

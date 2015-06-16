@@ -2,6 +2,7 @@ $(document).ready(onDeviceReady);
 window.passreal;
 window.passfalsa;
 window.passestado;
+window.mandaAudio=1;
 var name = device.name;
 if(name.indexOf("iP") > -1){
 	var devicePlatform="iOS";

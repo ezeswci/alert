@@ -1,46 +1,24 @@
-// JavaScript Document
+// JavaScript Document window.passestado!=0 // Con esto se que tengo que mandar uno nuevo
+window.deviceuuid=device.uuid;
+window.grabacionsrc="";
 function startAudioRec() {
-  var src = "rec.amr"; //ESTE ARCHIVO LO GUARDA EN EL DEVICE STORAGE
+	var date = new Date;
+	var fecha = date.getFullYear()+date.getMonth()+date.getDate()+date.getHours()+date.getMinutes()+date.getSeconds();
+  var src = window.deviceuuid+"rec"+fecha+".amr"; //ESTE ARCHIVO LO GUARDA EN EL DEVICE STORAGE
+  window.grabacionsrc= src;
   window.audioRec = new Media(src, recordOnSuccess, recordOnError);
   window.audioRec.startRecord();
-  circleBlink();
-  console.log("test");
+  setTimeout(function(){stopAudioRec();},30000);
 }
 function recordOnError() {}
-function recordOnSuccess() {}
+function recordOnSuccess() {window.audioRec.release();uploadFile(window.grabacionsrc,0);if(window.passestado!=0){startAudioRec();}}
 
-var visible = true;
-var recInterval;
-
-function circleBlink() {
-  window.recInterval = setInterval(blink, 1000);
-  function blink() {
-    var circle = document.getElementById('recCircle');
-    if (visible) {
-      circle.setAttribute("style", "visibility: hidden;");
-      visible = false;
-    } else {
-      circle.setAttribute("style", "visibility: visible;");
-      visible = true;
-    }
-  }
-}
 function stopAudioRec() {
   window.audioRec.stopRecord();
-  clearInterval(window.recInterval);
-  document.getElementById("recCircle").setAttribute("style", "visibility: hidden;");
-  alert("ubicacion:"+window.audioRec.fullPath + "nombre:"+mediaFile.name);
-				uploadFile(window.audioRec.fullPath, mediaFile.name);
-  window.audioRec.release();
-  ///YO INTENTE DESDE ACÁ UPLOADEAR EL ARCHIVO
 }
-function uploadFile(camino,nombre) {
-		alert("Manda archivo");
-		alert("ubicacion:"+camino);
-		mediaFile.play();
-		alert("reproduce archivo");
+function uploadFile(nombre,intento) {
         var ft = new FileTransfer(),
-            path = camino,
+            path = nombre,
             name = nombre;
 
         ft.upload(path,
@@ -48,9 +26,60 @@ function uploadFile(camino,nombre) {
             function(result) {
                 alert('Upload success: ' + result.responseCode);
                 alert(result.bytesSent + ' bytes sent');
+				window.audioRec.release();
             },
             function(error) {
                 alert('Error uploading file ' + path + ': ' + error.code);
             },
             { fileName: name });
     }
+function buscar(){
+	//alert("pruebo si existe la corta");
+	checkIfFileExists("recdos.amr");
+}
+function sendFile(src) {
+            var options = new FileUploadOptions();
+			options.fileKey = "audio";
+			options.fileName = src.substr(src.lastIndexOf('/') + 1);//Lleva el nombre con el que lo guardamos
+			options.mimeType = "audio/AMR";
+			options.httpMethod = "POST";
+			options.chunkedMode = false;
+
+            var params = {};
+            params.value1 = "test";
+            params.value2 = "param";
+
+            options.params = params;
+
+            var ft = new FileTransfer();
+            ft.upload(src, encodeURI("http://www.swci.com.ar/audio/upload.php"), win, fail, options);
+        }
+
+        function win(r) {
+			alert("Se mando");
+            //alert("Code = " + r.responseCode);
+            alert("Response = " + r.response);
+            //alert("Sent = " + r.bytesSent);
+        }
+
+        function fail(error) {
+            //alert("An error has occurred: Code = " + error.code);
+            //alert("upload error source " + error.source);
+            //alert("upload error target " + error.target);
+        }
+function checkIfFileExists(path){
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
+        fileSystem.root.getFile(path, { create: false }, fileExists, fileDoesNotExist);
+    }, getFSFail); //of requestFileSystem
+}
+function fileExists(fileEntry){
+    //alert("File " + fileEntry.fullPath + " exists! Te lo mando al server");
+	//alert("Lo que le tiene que pasar para uploadear es esto: "+fileEntry.toURL());
+	sendFile(fileEntry.toURL());
+}
+function fileDoesNotExist(){
+    //alert("file does not exist");
+}
+function getFSFail(evt) {
+    //alert(evt.target.error.code);
+}
