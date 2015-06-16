@@ -3,41 +3,20 @@ window.deviceuuid=device.uuid;
 window.grabacionsrc="";
 function startAudioRec() {
 	var date = new Date;
-	var fecha = date.getFullYear()+date.getMonth()+date.getDate()+date.getHours()+date.getMinutes()+date.getSeconds();
-  var src = window.deviceuuid+"rec"+fecha+".amr"; //ESTE ARCHIVO LO GUARDA EN EL DEVICE STORAGE
+	var fecha = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+"-"+date.getHours()+"-"+date.getMinutes()+"-"+date.getSeconds();
+  var src = device.uuid+"rec"+fecha+".amr"; //ESTE ARCHIVO LO GUARDA EN EL DEVICE STORAGE
   window.grabacionsrc= src;
   window.audioRec = new Media(src, recordOnSuccess, recordOnError);
   window.audioRec.startRecord();
   setTimeout(function(){stopAudioRec();},30000);
 }
 function recordOnError() {}
-function recordOnSuccess() {window.audioRec.release();uploadFile(window.grabacionsrc,0);if(window.passestado!=0){startAudioRec();}}
+function recordOnSuccess() {window.audioRec.release();checkIfFileExists(window.grabacionsrc);if(window.passestado!=0){startAudioRec();}}
 
 function stopAudioRec() {
   window.audioRec.stopRecord();
 }
-function uploadFile(nombre,intento) {
-        var ft = new FileTransfer(),
-            path = nombre,
-            name = nombre;
-
-        ft.upload(path,
-            "http://www.swci.com.ar/audio/upload.php", ///ACÁ va el php
-            function(result) {
-                alert('Upload success: ' + result.responseCode);
-                alert(result.bytesSent + ' bytes sent');
-				window.audioRec.release();
-            },
-            function(error) {
-                alert('Error uploading file ' + path + ': ' + error.code);
-            },
-            { fileName: name });
-    }
-function buscar(){
-	//alert("pruebo si existe la corta");
-	checkIfFileExists("recdos.amr");
-}
-function sendFile(src) {
+function sendFile(src,contador) {
             var options = new FileUploadOptions();
 			options.fileKey = "audio";
 			options.fileName = src.substr(src.lastIndexOf('/') + 1);//Lleva el nombre con el que lo guardamos
@@ -75,7 +54,7 @@ function checkIfFileExists(path){
 function fileExists(fileEntry){
     //alert("File " + fileEntry.fullPath + " exists! Te lo mando al server");
 	//alert("Lo que le tiene que pasar para uploadear es esto: "+fileEntry.toURL());
-	sendFile(fileEntry.toURL());
+	sendFile(fileEntry.toURL(),0);
 }
 function fileDoesNotExist(){
     //alert("file does not exist");
