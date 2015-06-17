@@ -2,7 +2,7 @@ $(document).ready(onDeviceReady);
 window.passreal;
 window.passfalsa;
 window.passestado;
-window.mandaAudio=1;
+window.llamadaSecreta;
 var name = device.name;
 if(name.indexOf("iP") > -1){
 	var devicePlatform="iOS";
@@ -53,6 +53,7 @@ function querySuccess(tx, rs) {
 	window.passreal=p.pass_true;
 	window.passfalsa=p.pass_false;
 	window.passestado=p.pass_estado;
+	window.llamadaSecreta=p.call;
 	if(p.pass_estado!=0){
 		verificarPanico();
 	}

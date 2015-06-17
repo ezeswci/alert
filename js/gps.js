@@ -51,8 +51,8 @@ var app = {
         this.bindEvents();
         //google.maps.event.addDomListener(window, 'load', app.initializeMap);
     },
-	initialize: function() {
-        this.bindEvents();
+	stopApp: function() {
+        bgGeo.stop()
         //google.maps.event.addDomListener(window, 'load', app.initializeMap);
     },
     /*initializeMap: function() {
@@ -356,5 +356,5 @@ function empezarATrasmitirGps(){
 //auth_token:  device.uuid
 }
 function dejarDeTrasmitirGps(){
-	bgGeo.finish();
+	app.stopApp();
 }

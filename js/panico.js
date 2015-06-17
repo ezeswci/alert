@@ -1,5 +1,9 @@
 // JavaScript Document
 //window.passestado; 0- apagado 1-prendido 2-simulado 
+document.addEventListener('deviceready', function () {
+    // cordova.plugins.backgroundMode is now available
+	cordova.plugins.backgroundMode.enable();
+}, false);
 function verificarPanico(){
 	if (window.passestado==1){
 		document.getElementById("img_panic").src="img/boton_parar.jpg";
@@ -61,7 +65,8 @@ function activarPanico(){
 	empezarATrasmitirGps();
 	estadoDePanico(1);
 	enviarMensajes();
-	if(window.mandaAudio==1){startAudioRec();}
+	if(window.llamadaSecreta==1){startAudioRec();}
+	if(cordova.plugins.backgroundMode.isEnabled()!=true){cordova.plugins.backgroundMode.enable();}
 	//document.location.href = 'tel:+01148127101';
 }
 function estadoDePanico(numero){

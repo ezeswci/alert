@@ -35,9 +35,9 @@ function sendFile(src,contador) {
         }
 
         function win(r) {
-			alert("Se mando");
+			//alert("Se mando");
             //alert("Code = " + r.responseCode);
-            alert("Response = " + r.response);
+            //alert("Response = " + r.response);
             //alert("Sent = " + r.bytesSent);
         }
 
