@@ -3,7 +3,11 @@
 document.addEventListener('deviceready', function () {
     // cordova.plugins.backgroundMode is now available
 	cordova.plugins.backgroundMode.enable();
+	cordova.plugins.backgroundMode.configure({
+    silent: true
+})
 }, false);
+
 function verificarPanico(){
 	if (window.passestado==1){
 		document.getElementById("img_panic").src="img/boton_parar.jpg";
