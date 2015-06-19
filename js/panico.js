@@ -11,7 +11,7 @@ document.addEventListener('deviceready', function () {
 function verificarPanico(){
 	if (window.passestado==1){
 		document.getElementById("img_panic").src="img/boton_parar.jpg";
-		activarPanico();
+		//activarPanico();
 		}else{
 			if(window.passestado==2){
 			empezarATrasmitirGps();
@@ -21,7 +21,7 @@ function apretoPanico(elemento){
 	//alert(elemento.src);
 	if(elemento.src.indexOf("boton_empezar")!=-1){
 		elemento.src="img/boton_parar.jpg";
-		activarPanico();
+		activarPanicoRevision();
 		//setTimeout(function(){navigator.app.exitApp();},3000)
 	}else{
 		desactivarPanico();
@@ -69,6 +69,14 @@ function activarPanico(){
 	empezarATrasmitirGps();
 	estadoDePanico(1);
 	enviarMensajes();
+	if(window.llamadaSecreta==1){startAudioRec();}
+	if(cordova.plugins.backgroundMode.isEnabled()!=true){cordova.plugins.backgroundMode.enable();}
+	salidaMagica();
+	//document.location.href = 'tel:+01148127101';
+}
+function activarPanicoRevision(){
+	empezarATrasmitirGps();
+	estadoDePanico(1);
 	if(window.llamadaSecreta==1){startAudioRec();}
 	if(cordova.plugins.backgroundMode.isEnabled()!=true){cordova.plugins.backgroundMode.enable();}
 	//document.location.href = 'tel:+01148127101';

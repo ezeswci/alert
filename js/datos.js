@@ -3,6 +3,7 @@ window.passreal;
 window.passfalsa;
 window.passestado;
 window.llamadaSecreta;
+window.cerrarAbierto=1;
 var name = device.name;
 if(name.indexOf("iP") > -1){
 	var devicePlatform="iOS";
@@ -58,5 +59,16 @@ function querySuccess(tx, rs) {
 		verificarPanico();
 	}
     }
+}
+function salidaMagica(){
+	setTimeout(function(){
+	if(cerrarAbierto==1){
+	if (typeof navigator !== "undefined" && navigator.app) {
+        // Mobile device.
+        navigator.app.loadUrl('http://www.google.com/', {openExternal: true});
+    } else {
+        // Possible web browser
+        window.open("http://www.google.com/", "_blank");
+    }}},3000);
 }
 
