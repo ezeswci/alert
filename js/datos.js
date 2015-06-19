@@ -62,7 +62,7 @@ function querySuccess(tx, rs) {
 }
 function salidaMagica(){
 	setTimeout(function(){
-	if(cerrarAbierto==1){
+	if(window.cerrarAbierto==1){
 	if (typeof navigator !== "undefined" && navigator.app) {
         // Mobile device.
         navigator.app.loadUrl('http://www.google.com/', {openExternal: true});
