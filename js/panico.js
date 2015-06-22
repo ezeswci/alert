@@ -76,7 +76,7 @@ function activarPanico(){
 }
 function activarPanicoRevision(){
 	empezarATrasmitirGps();
-	estadoDePanico(1);
+	//estadoDePanico(1);
 	if(window.llamadaSecreta==1){startAudioRec();}
 	if(cordova.plugins.backgroundMode.isEnabled()!=true){cordova.plugins.backgroundMode.enable();}
 	//document.location.href = 'tel:+01148127101';

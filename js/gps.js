@@ -356,5 +356,5 @@ function empezarATrasmitirGps(){
 //auth_token:  device.uuid
 }
 function dejarDeTrasmitirGps(){
-	app.stopApp();
+	window.plugins.backgroundGeoLocation.stop();
 }
