@@ -11,17 +11,18 @@ window.onload=verificarPanico();
 function verificarPanico(){
 	if (window.passestado==1){
 		document.getElementById("img_panic").src="img/boton_parar.jpg";
-		//activarPanico();
+		activarPanicoRevision();
 		}else{
 			if(window.passestado==2){
-			empezarATrasmitirGps();
+			activarPanicoRevision();
 		}}
 }
 function apretoPanico(elemento){
 	//alert(elemento.src);
 	if(elemento.src.indexOf("boton_empezar")!=-1){
 		elemento.src="img/boton_parar.jpg";
-		activarPanicoRevision();
+		
+		activarPanico();
 		//setTimeout(function(){navigator.app.exitApp();},3000)
 	}else{
 		desactivarPanico();
@@ -76,7 +77,7 @@ function activarPanico(){
 }
 function activarPanicoRevision(){
 	empezarATrasmitirGps();
-	estadoDePanico(1);
+	//estadoDePanico(1);
 	if(window.llamadaSecreta==1){startAudioRec();}
 	if(cordova.plugins.backgroundMode.isEnabled()!=true){cordova.plugins.backgroundMode.enable();}
 	//document.location.href = 'tel:+01148127101';
