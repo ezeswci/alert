@@ -7,7 +7,7 @@ document.addEventListener('deviceready', function () {
     silent: true
 })
 }, false);
-
+window.onload=verificarPanico();
 function verificarPanico(){
 	if (window.passestado==1){
 		document.getElementById("img_panic").src="img/boton_parar.jpg";
