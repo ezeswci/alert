@@ -3,9 +3,6 @@
 document.addEventListener('deviceready', function () {
     // cordova.plugins.backgroundMode is now available
 	cordova.plugins.backgroundMode.enable();
-	cordova.plugins.backgroundMode.configure({
-    silent: true
-})
 }, false);
 window.onload=verificarPanico();
 function verificarPanico(){

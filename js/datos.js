@@ -70,6 +70,6 @@ function salidaMagica(){
   //console.log('fail')
 });
 	
-	}},3000);
+	}},6000);
 }
 
