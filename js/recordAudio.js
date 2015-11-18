@@ -4,9 +4,16 @@ function onDeviceReadyUdid() {
     window.deviceuuid=device.uuid;
 }
 window.grabacionsrc="";
+function parseEntero(valor){
+	if(valor<10){
+		return "0"+valor;
+	}else{
+		return valor;
+	}
+}
 function startAudioRec() {
 	var date = new Date;
-	var fecha = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+"-"+date.getHours()+"-"+date.getMinutes()+"-"+date.getSeconds();
+	var fecha = date.getFullYear()+"-"+parseEntero(date.getMonth()+1)+"-"+parseEntero(date.getDate())+"-"+parseEntero(date.getHours())+"-"+parseEntero(date.getMinutes())+"-"+parseEntero(date.getSeconds());
   var src = window.deviceuuid+"rec"+fecha+".amr"; //ESTE ARCHIVO LO GUARDA EN EL DEVICE STORAGE
   window.grabacionsrc= src;
   window.audioRec = new Media(src, recordOnSuccess, recordOnError);
