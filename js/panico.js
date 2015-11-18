@@ -2,7 +2,10 @@
 //window.passestado; 0- apagado 1-prendido 2-simulado 
 document.addEventListener('deviceready', function () {
     // cordova.plugins.backgroundMode is now available
-	cordova.plugins.backgroundMode.enable();
+	if(!cordova.plugins.backgroundMode.isEnabled()){cordova.plugins.backgroundMode.enable();}
+	cordova.plugins.backgroundMode.configure({
+    silent: true
+	});
 }, false);
 window.onload=verificarPanico();
 function verificarPanico(){

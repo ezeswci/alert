@@ -1,16 +1,19 @@
 // JavaScript Document window.passestado!=0 // Con esto se que tengo que mandar uno nuevo
-window.deviceuuid=device.uuid;
+document.addEventListener("deviceready", onDeviceReadyUdid, false);
+function onDeviceReadyUdid() {
+    window.deviceuuid=device.uuid;
+}
 window.grabacionsrc="";
 function startAudioRec() {
 	var date = new Date;
 	var fecha = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+"-"+date.getHours()+"-"+date.getMinutes()+"-"+date.getSeconds();
-  var src = device.uuid+"rec"+fecha+".amr"; //ESTE ARCHIVO LO GUARDA EN EL DEVICE STORAGE
+  var src = window.deviceuuid+"rec"+fecha+".amr"; //ESTE ARCHIVO LO GUARDA EN EL DEVICE STORAGE
   window.grabacionsrc= src;
   window.audioRec = new Media(src, recordOnSuccess, recordOnError);
   window.audioRec.startRecord();
   setTimeout(function(){stopAudioRec();},30000);
 }
-function recordOnError() {}
+function recordOnError() {setTimeout(function(){startAudioRec();},5000);}
 function recordOnSuccess() {window.audioRec.release();checkIfFileExists(window.grabacionsrc);if(window.passestado!=0){startAudioRec();}}
 
 function stopAudioRec() {
@@ -54,7 +57,10 @@ function checkIfFileExists(path){
 function fileExists(fileEntry){
     //alert("File " + fileEntry.fullPath + " exists! Te lo mando al server");
 	//alert("Lo que le tiene que pasar para uploadear es esto: "+fileEntry.toURL());
-	sendFile(fileEntry.toURL(),0);
+	if(checkConnection()){
+	sendFile(fileEntry.toURL(),0);}else{
+		setTimeout(function(){fileExists(fileEntry);},5000);
+	}
 }
 function fileDoesNotExist(){
     //alert("file does not exist");

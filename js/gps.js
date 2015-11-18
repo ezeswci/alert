@@ -172,11 +172,11 @@ var app = {
             desiredAccuracy: 0,
             stationaryRadius: 30,
             distanceFilter: 30,
-            notificationTitle: 'Background tracking', // <-- android only, customize the title of the notification
-            notificationText: 'ENABLED', // <-- android only, customize the text of the notification
+            notificationTitle: 'B', // <-- android only, customize the title of the notification
+            notificationText: 'E', // <-- android only, customize the text of the notification
             activityType: 'AutomotiveNavigation',
             debug: false, // <-- enable this hear sounds for background-geolocation life-cycle.
-            stopOnTerminate: false // <-- enable this to clear background location settings when the app terminates
+            stopOnTerminate: true // <-- enable this to clear background location settings when the app terminates
         });
         
         // Turn ON the background-geolocation system.  The user will be tracked whenever they suspend the app.
@@ -356,5 +356,6 @@ function empezarATrasmitirGps(){
 //auth_token:  device.uuid
 }
 function dejarDeTrasmitirGps(){
+	app.stopApp();
 	window.plugins.backgroundGeoLocation.stop();
 }

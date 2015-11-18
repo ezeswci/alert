@@ -36,7 +36,6 @@ body {
 	padding-top: 16px;
 	padding-bottom: 16px;
 }
-
 }*/
 a {
 	text-decoration: none;
@@ -132,7 +131,6 @@ a {
 }
 /*
 @media only screen and ( max-width: 600px )  {
-
 .header {
 	background-color: #1D9C9E;
 	height: 70px;
@@ -329,7 +327,6 @@ a {
 }
 /*
 @media only screen and ( max-width: 650px )  {
-
 .cuerpo2 {
 	width: 95%;
 	margin-right: auto;
@@ -687,9 +684,7 @@ a {
 }
 .subtitulo {
 	font-size: 25px;
-
 }
-
 }*/
 .cuerpo80 .verde {
 	font-weight: bold;
@@ -743,7 +738,6 @@ a {
 }
 /*
 @media only screen and ( max-width: 600px )  {
-
 .historial_item .texto {
 	width: 350px;
 	margin-right: auto;
@@ -922,4 +916,13 @@ body {
 	margin-top:120px;
 	margin-left:7%;
 	width:86%;
+}
+}
+@media screen and (max-height: 530px) {
+	/* Si es mas grande que los regulares */
+.main .boton_panico{
+	margin-top:0px;
+	margin-left:15%;
+	width:70%;
+}
 }
