@@ -4,6 +4,8 @@ window.passfalsa;
 window.passestado;
 window.llamadaSecreta;
 window.cerrarAbierto=1;
+window.celCode="abcdef1234";
+window.alarmStatus=0;
 var name = device.name;
 if(name.indexOf("iP") > -1){
 	var devicePlatform="iOS";
