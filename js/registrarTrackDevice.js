@@ -32,10 +32,11 @@ function registrarClubHouse(){// Envio el codigo a esa direccion para
 	 	 }
 		xmlhttp.onreadystatechange=function()
 	  	{
-			//alert(xmlhttp.readyState+"ready-status"+xmlhttp.status);
+			alert(xmlhttp.readyState+"ready-status"+xmlhttp.status);
 	 	 if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	    {
 			respuesta=xmlhttp.responseText;
+			alert(respuesta);
 			if(respuesta!="0"){
 				devolucion=respuesta.split("-")
     			window.sis_ip=parseInt(devolucion[0]);
