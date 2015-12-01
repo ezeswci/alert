@@ -82,6 +82,7 @@
 	<gap:plugin name="com.badrit.backbutton" version="0.1.0" />
 	<gap:plugin name="cordova-plugin-network-information" version="1.0.1" />
 	<plugin name="com.footprint.cordova.plugin.local-notification" spec="0.8.0" source="pgb" />
+	<plugin name="com.indigoway.cordova.whitelist.whitelistplugin" spec="1.1.1" source="pgb" />
 	<!-- GeoLocation platform. -->
 	
 	<!-- Define app icon for each platform. -->	
