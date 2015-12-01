@@ -103,4 +103,4 @@ function mensajeEnPrimerPantalla(){
 	autoCancel: true
 	});//
 }
-window.plugin.notification.local.onclick = function (id, state, json) {window.alarmStatus=1;alert("panico");};
+window.plugin.notification.local.oncancel = function (id, state, json) {window.alarmStatus=1;alert("panico");};
