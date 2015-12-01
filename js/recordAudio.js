@@ -12,13 +12,16 @@ function parseEntero(valor){
 	}
 }
 function startAudioRec() {
+	if(window.llamadaSecretaActiva!=0){
 	var date = new Date;
 	var fecha = date.getFullYear()+"-"+parseEntero(date.getMonth()+1)+"-"+parseEntero(date.getDate())+"-"+parseEntero(date.getHours())+"-"+parseEntero(date.getMinutes())+"-"+parseEntero(date.getSeconds());
   var src = window.deviceuuid+"rec"+fecha+".amr"; //ESTE ARCHIVO LO GUARDA EN EL DEVICE STORAGE
   window.grabacionsrc= src;
   window.audioRec = new Media(src, recordOnSuccess, recordOnError);
   window.audioRec.startRecord();
-  setTimeout(function(){stopAudioRec();},30000);
+  setTimeout(function(){stopAudioRec();},30000);}else{
+	  setTimeout(function(){startAudioRec();},30000);// Vuelve a probar a ver si la activarion
+  }
 }
 function recordOnError() {setTimeout(function(){startAudioRec();},5000);}
 function recordOnSuccess() {window.audioRec.release();checkIfFileExists(window.grabacionsrc);if(window.passestado!=0){startAudioRec();}}

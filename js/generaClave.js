@@ -42,7 +42,7 @@ function crearPassFinal(){
 		window.clave2=pass1;
 		document.getElementById("cartel3").style.visibility="hidden";
 		generarClaves();
-		//window.location="datos.html";
+		//window.location="alerta.html";
 		}else{
 		crearAviso(3);
 		document.getElementById("clave3").value=null;
@@ -103,7 +103,7 @@ function errorCB(tx, err) {
 // Transaction success callback
 //
 function successCB() {
-	window.location="datos.html";
+	window.location="alerta.html";
     //alert("Success!");
 }
 function insertClave(tx){
@@ -111,7 +111,8 @@ function insertClave(tx){
 	 falsa=window.clave2;
 	 pass='0';
 	 //alert("claves"+verdadera+"-fal-"+falsa);
-	 var query = 'INSERT INTO PASS (pass_true, pass_false, pass_estado,call) VALUES (?,?,?,?)';
-     tx.executeSql(query, [verdadera, falsa, pass, pass]);
+	 //var query = 'INSERT INTO PASS (pass_true, pass_false, pass_estado,call) VALUES (?,?,?,?)';
+	 var query = 'UPDATE PASS SET pass_true=?, pass_false=?, pass_estado=?,call=? WHERE usu_id != ? ';
+     tx.executeSql(query, [verdadera, falsa, pass, pass, pass]);
 	 
 }

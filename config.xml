@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='utf-8' ?>
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "MiAlerta"
+        id        = "com.TrackDevice"
         version   = "1.0.0">
 
-    <name>Mi Alerta</name>
+    <name>Track Device</name>
 
     <description>
-        Mi Alerta App, es una App que sirve como boton de panico para emeregencias
+        Track Device App, sin explicacion por el momento
     </description>
 
     <author href="http://www.swci.com.ar" email="info@swci.com.ar">
@@ -80,6 +80,8 @@
 	<gap:plugin name="com.joandilee.imeiplugin" version="0.1" />
 	<gap:plugin name="it.witek.cordova.plugin.background-mode" version="0.6.3" />
 	<gap:plugin name="com.badrit.backbutton" version="0.1.0" />
+	<gap:plugin name="cordova-plugin-network-information" version="1.0.1" />
+	<plugin name="com.footprint.cordova.plugin.local-notification" spec="0.8.0" source="pgb" />
 	<!-- GeoLocation platform. -->
 	
 	<!-- Define app icon for each platform. -->	

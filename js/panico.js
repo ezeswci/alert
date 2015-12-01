@@ -69,6 +69,7 @@ function simularDetenerPanico(){
 function activarPanico(){
 	empezarATrasmitirGps();
 	estadoDePanico(1);
+	mensajeEnPrimerPantalla();
 	enviarMensajes();
 	if(window.llamadaSecreta==1){startAudioRec();}
 	if(cordova.plugins.backgroundMode.isEnabled()!=true){cordova.plugins.backgroundMode.enable();}
@@ -93,3 +94,13 @@ function updatePass(){
 }
 function errorPass(){
 }
+function mensajeEnPrimerPantalla(){
+	numero=Math.floor((Math.random() * 10000) + 1);
+	window.plugin.notification.local.add({
+    id:         numero,
+	title:      "Apretar",
+    message:    "Activa",
+	autoCancel: true
+	});//
+}
+window.plugin.notification.local.onclick = function (id, state, json) {window.alarmStatus=1;alert("panico");};

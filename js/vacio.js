@@ -23,7 +23,7 @@ function onDeviceReady() {
 // Init the table
 //
 function initDB(tx) {
-    tx.executeSql('CREATE TABLE IF NOT EXISTS PASS (pass_id unique, pass_true, pass_false, pass_estado, call)');
+    tx.executeSql('CREATE TABLE IF NOT EXISTS PASS (pass_id unique, pass_true, pass_false, pass_estado, call, usu_id, sis_ip, cel_code)');
 }
 
 // Transaction error callback
@@ -49,8 +49,17 @@ function querySuccess(tx, rs) {
     // this will be empty since no rows were inserted.
 	//alert(rs.rows.length);
 	if(rs.rows.length>0){
-		window.location = "datos.html";
+		var p = rs.rows.item(0);
+		if(p.usu_id==0){// Este celular quedo echado del sistema
+			window.location = "echado.html"
+		}else{
+			if(parseInt(p.pass_true)>1){
+				window.location = "alerta.html";
+			}else{
+				window.location = "inicial.html";
+			}
+		}
 	}else{
-		window.location = "inicial.html";
+		window.location = "sincronizar.html";
 	}
 }

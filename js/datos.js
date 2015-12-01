@@ -3,8 +3,9 @@ window.passreal;
 window.passfalsa;
 window.passestado;
 window.llamadaSecreta;
+window.llamadaSecretaActiva=1;//0;
 window.cerrarAbierto=1;
-window.celCode="abcdef1234";
+window.celCode;
 window.alarmStatus=0;
 var name = device.name;
 if(name.indexOf("iP") > -1){
@@ -57,6 +58,8 @@ function querySuccess(tx, rs) {
 	window.passfalsa=p.pass_false;
 	window.passestado=p.pass_estado;
 	window.llamadaSecreta=p.call;
+	window.sis_ip=p.sis_ip;
+	window.celCode=p.cel_code;
 	if(p.pass_estado!=0){
 		verificarPanico();
 	}
