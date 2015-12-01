@@ -31,7 +31,7 @@ function querySuccessM(tx, rs) {
 }
 function eviarMensaje(con_id, con_tipo, con_nombre, con_destino){
 	//alert("Sale Sms");
-	message="Esto es un Mensaje de la App Tu Alerta entra en este link para seguirme: http://www.swci.com.ar/monitoreo/vehiculos_posicion_direct_cel.php?gps="+device.uuid;
+	message="Esto es un Mensaje de la App Tu Alerta entra en este link para seguirme: http://www.swci.com.ar/monitoreo/vehiculos_posicion_direct_cel.php?gps="+window.celCode;
 		var options = {
             replaceLineBreaks: false, // true to replace \n by a new line, false by default
             android: {
@@ -47,7 +47,7 @@ function errorCB(){
 }
 function enviarMails(destinos) {
 	//alert("Sale Mail");
-	msj="Esto es un Mensaje de la App Tu Alerta entra en este link para seguirme: http://www.swci.com.ar/monitoreo/vehiculos_posicion_direct_cel.php?gps="+device.uuid;
+	msj="Esto es un Mensaje de la App Tu Alerta entra en este link para seguirme: http://www.swci.com.ar/monitoreo/vehiculos_posicion_direct_cel.php?gps="+window.celCode;
 	window.plugin.email.open({
     to:      destinos,
     cc:      [''],
