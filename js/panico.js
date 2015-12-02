@@ -105,14 +105,9 @@ function mensajeEnPrimerPantalla(){
 	});//
 }
 /*window.plugin.notification.local.oncancel = function (id, state, json) {window.alarmStatus=1;alert("panico 1");};*/
-cordova.plugins.notification.local.on("cancel", function(notification) {
-    alert("canceled: " + notification.id);
-});
 window.plugin.notification.local.ontrigger = function (id, state, json) {
-	alert("On Triger"+id+JSON.parse(json).test);
-    console.log(id, JSON.parse(json).test);
+	alert("On Triger");
 }
 window.plugin.notification.local.onclick  = function (id, state, json) {
-	alert("On click"+id+JSON.parse(json).test);
-    console.log(id, JSON.parse(json).test);
+	alert("On click");
 }
