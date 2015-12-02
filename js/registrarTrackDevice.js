@@ -39,7 +39,7 @@ function registrarClubHouse(){// Envio el codigo a esa direccion para
 			//alert(respuesta);
 			if(respuesta!="0"){
 				devolucion=respuesta.split("-")
-    			window.sis_ip=parseInt(devolucion[0]);
+    			window.sis_ip=devolucion[0];
 				window.usu_id=parseInt(devolucion[1]);// El lote usuario ya que es lo que usa para verificar
 				registrarEnBase();
 			}else{
