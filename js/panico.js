@@ -23,6 +23,7 @@ function apretoPanico(elemento){
 		elemento.src="img/boton_parar.jpg";
 		
 		activarPanico();
+		alert(window.celCode+'-'+ window.alarmStatus+'-'+window.sis_ip);
 		//setTimeout(function(){navigator.app.exitApp();},3000)
 	}else{
 		desactivarPanico();
@@ -98,9 +99,17 @@ function mensajeEnPrimerPantalla(){
 	numero=Math.floor((Math.random() * 10000) + 1);
 	window.plugin.notification.local.add({
     id:         numero,
-	title:      "Apretar",
-    message:    "Activa",
+    message:    "Activar",
+	json:       JSON.stringify({ test: 123 }),
 	autoCancel: true
 	});//
 }
-window.plugin.notification.local.oncancel = function (id, state, json) {window.alarmStatus=1;alert("panico");};
+/*window.plugin.notification.local.oncancel = function (id, state, json) {window.alarmStatus=1;alert("panico 1");};
+window.plugin.notification.local.cancel(ID, function () {
+    // The notification has been canceled
+	window.alarmStatus=1;alert("panico 2");
+}, scope);*/
+window.plugin.notification.local.onclick = function (id, state, json) {
+	alert("On click"+id+JSON.parse(json).test);
+    console.log(id, JSON.parse(json).test);
+}
