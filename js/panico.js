@@ -100,14 +100,10 @@ function mensajeEnPrimerPantalla(){
 	window.plugin.notification.local.add({
     id:         numero,
     message:    "Activar",
-	json:       JSON.stringify({ test: 123 }),
-	autoCancel: true
+	json:       JSON.stringify({ test: 123 })
 	});//
 }
 /*window.plugin.notification.local.oncancel = function (id, state, json) {window.alarmStatus=1;alert("panico 1");};*/
-window.plugin.notification.local.ontrigger = function (id, state, json) {
-	alert("On Triger");
-}
-window.plugin.notification.local.onclick  = function (id, state, json) {
-	alert("On click");
+window.plugin.notification.local.onclick = function (id, state, json) {
+    setTimeout(function(){alert("siiiiii");},5000);
 }
