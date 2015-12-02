@@ -100,10 +100,19 @@ function mensajeEnPrimerPantalla(){
 	window.plugin.notification.local.add({
     id:         numero,
     message:    "Activar",
-	json:       JSON.stringify({ test: 123 })
+	json:       JSON.stringify({ test: 123 }),
+	autoCancel: true
 	});//
 }
 /*window.plugin.notification.local.oncancel = function (id, state, json) {window.alarmStatus=1;alert("panico 1");};*/
+document.addEventListener('deviceready', function () {
+	alert("device ready");
 window.plugin.notification.local.onclick = function (id, state, json) {
-    setTimeout(function(){alert("siiiiii");},5000);
+    setTimeout(function(){alert("alerta apertada");},2000);
 }
+});
+document.addEventListener('deviceready', function () {
+window.plugin.notification.local.oncancel = function (id, state, json) {
+    setTimeout(function(){alert('alerta cancelada');},2000);
+}
+});
