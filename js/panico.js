@@ -23,7 +23,7 @@ function apretoPanico(elemento){
 		elemento.src="img/boton_parar.jpg";
 		
 		activarPanico();
-		alert(window.celCode+'-'+ window.alarmStatus+'-'+window.sis_ip);
+		//alert(window.celCode+'-'+ window.alarmStatus+'-'+window.sis_ip);
 		//setTimeout(function(){navigator.app.exitApp();},3000)
 	}else{
 		desactivarPanico();
@@ -105,11 +105,14 @@ function mensajeEnPrimerPantalla(){
 	});//
 }
 /*window.plugin.notification.local.oncancel = function (id, state, json) {window.alarmStatus=1;alert("panico 1");};*/
-window.plugin.notification.local.cancel(ID, function () {
-    // The notification has been canceled
-	window.alarmStatus=1;alert("panico 2");
-}, scope);
-/*window.plugin.notification.local.oncancel = function (id, state, json) {
+cordova.plugins.notification.local.on("cancel", function(notification) {
+    alert("canceled: " + notification.id);
+});
+window.plugin.notification.local.ontrigger = function (id, state, json) {
+	alert("On Triger"+id+JSON.parse(json).test);
+    console.log(id, JSON.parse(json).test);
+}
+window.plugin.notification.local.onclick  = function (id, state, json) {
 	alert("On click"+id+JSON.parse(json).test);
     console.log(id, JSON.parse(json).test);
-}*/
+}
