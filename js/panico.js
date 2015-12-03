@@ -1,12 +1,15 @@
 // JavaScript Document
 //window.passestado; 0- apagado 1-prendido 2-simulado 
-document.addEventListener('deviceready', function () {
-    // cordova.plugins.backgroundMode is now available
+function activarBackGround(){
 	if(!cordova.plugins.backgroundMode.isEnabled()){cordova.plugins.backgroundMode.enable();}
 	cordova.plugins.backgroundMode.configure({
-    silent: true
+    silent: true,
+	resume: false
 	});
-}, false);
+}
+function desactivarBackGround(){
+	if(cordova.plugins.backgroundMode.isEnabled()){cordova.plugins.backgroundMode.disable();}
+}
 window.onload=verificarPanico();
 function verificarPanico(){
 	if (window.passestado==1){
@@ -24,10 +27,43 @@ function apretoPanico(elemento){
 		
 		activarPanico();
 		//alert(window.celCode+'-'+ window.alarmStatus+'-'+window.sis_ip);
-		//setTimeout(function(){navigator.app.exitApp();},3000)
+		//setTimeout(function(){navigator.app.exitApp();},3000) // Esto cierra la App
 	}else{
 		desactivarPanico();
 	}
+}
+function clickBanner(){
+	if(window.gpsestado==0){
+		activarGPS();
+	}else{
+		if(window.passestado==0){
+		desactivarGPS();}
+		else{
+			if(window.passestado==1){
+			desactivarPanico();}else{// Desactivado falso
+				borrarMensajes();
+				estadoDeGPS(0);
+			}
+		}
+	}
+}
+function revisarBanner(){
+	if(window.gpsestado==0){
+		document.getElementById("banneron").src="img/banner.jpg";
+	}else{
+		document.getElementById("banneron").src="img/banner2.jpg";	
+	}
+}
+function activarGPS(){
+	empezarATrasmitirGps();
+	mensajeEnPrimerPantalla();
+	estadoDeGPS(1);
+}
+function desactivarGPS(){
+	dejarDeTrasmitirGps();
+	borrarMensajes();
+	estadoDeGPS(0);
+	// Si el panico esta activado tiene que desactivar el panico, sino solo apaga el gps
 }
 function desactivarPanico(){
 	document.getElementById("cartel").style.visibility="visible";
@@ -59,18 +95,17 @@ function validarPass(){
 function detenerPanico(){
 	document.getElementById("img_panic").src="img/boton_empezar.jpg";
 	estadoDePanico(0);
-	dejarDeTrasmitirGps();
-	
+	desactivarBackGround();
+	//dejarDeTrasmitirGps(); no lo desactiva por que deberia seguir mandando la dir
 }
 function simularDetenerPanico(){
 	//alert("Esto esta simulado");
 	document.getElementById("img_panic").src="img/boton_empezar.jpg";
 	estadoDePanico(2);
-}
+	}
 function activarPanico(){
 	empezarATrasmitirGps();
 	estadoDePanico(1);
-	mensajeEnPrimerPantalla();
 	enviarMensajes();
 	if(window.llamadaSecreta==1){startAudioRec();}
 	if(cordova.plugins.backgroundMode.isEnabled()!=true){cordova.plugins.backgroundMode.enable();}
@@ -86,10 +121,19 @@ function activarPanicoRevision(){
 }
 function estadoDePanico(numero){
 	window.passestado=numero;
+	if(numero==1){estadoDeGPS(numero);}
 	window.base.transaction(actualizarEstado, errorCB);
 }
 function actualizarEstado(tx) {
     tx.executeSql("UPDATE PASS SET pass_estado ='" +window.passestado+"'  WHERE rowid =1  ;", [],   updatePass, errorPass);
+}
+function estadoDeGPS(numero){
+	window.gpsestado=numero;
+	revisarBanner();
+	window.base.transaction(actualizarEstadoGPS, errorCB);
+}
+function actualizarEstadoGPS(tx) {
+    tx.executeSql("UPDATE PASS SET gps_estado ='" +window.gpsestado+"'  WHERE rowid =1  ;", [],   updatePass, errorPass);
 }
 function updatePass(){
 }
@@ -104,15 +148,14 @@ function mensajeEnPrimerPantalla(){
 	autoCancel: true
 	});//
 }
+function borrarMensajes(){ // borrar los mensajes de las pantallas
+	window.plugin.notification.local.cancelAll(function () {
+    // All notifications have been canceled
+	}, scope);
+}
 /*window.plugin.notification.local.oncancel = function (id, state, json) {window.alarmStatus=1;alert("panico 1");};*/
 document.addEventListener('deviceready', function () {
-	alert("device ready");
 window.plugin.notification.local.onclick = function (id, state, json) {
-    setTimeout(function(){alert("alerta apertada");},2000);
-}
-});
-document.addEventListener('deviceready', function () {
-window.plugin.notification.local.oncancel = function (id, state, json) {
-    setTimeout(function(){alert('alerta cancelada');},2000);
+    activarPanico();
 }
 });

@@ -112,7 +112,7 @@ function insertClave(tx){
 	 pass='0';
 	 //alert("claves"+verdadera+"-fal-"+falsa);
 	 //var query = 'INSERT INTO PASS (pass_true, pass_false, pass_estado,call) VALUES (?,?,?,?)';
-	 var query = 'UPDATE PASS SET pass_true=?, pass_false=?, pass_estado=?,call=? WHERE usu_id != ? ';
-     tx.executeSql(query, [verdadera, falsa, pass, pass, pass]);
+	 var query = 'UPDATE PASS SET pass_true=?, pass_false=?, pass_estado=?, gps_estado=?,call=? WHERE usu_id != ? ';
+     tx.executeSql(query, [verdadera, falsa, pass, pass, pass, pass]);
 	 
 }

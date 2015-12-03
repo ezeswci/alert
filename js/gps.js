@@ -98,7 +98,7 @@ var app = {
         bgGeo.configure(callbackFn, failureFn, {
             url: window.sis_ip, // <-- Android ONLY:  your server url to send locations to
             params: {
-                auth_token:  window.celCode+'-'+ window.alarmStatus,    //  <-- Android ONLY:  HTTP POST params sent to your server when persisting locations.
+                auth_token:  window.celCode+'-'+ window.passestado,    //  <-- Android ONLY:  HTTP POST params sent to your server when persisting locations.
                 foo: 'bar'                              //  <-- Android ONLY:  HTTP POST params sent to your server when persisting locations.
             },
             desiredAccuracy: 0,
@@ -169,5 +169,5 @@ function empezarATrasmitirGps(){
 }
 function dejarDeTrasmitirGps(){
 	window.navigator.geolocation.stop();
-	window.plugins.backgroundGeoLocation.stop();
+	window.plugins.backgroundGeoLocation.finish();
 }

@@ -57,11 +57,15 @@ function querySuccess(tx, rs) {
 	window.passreal=p.pass_true;
 	window.passfalsa=p.pass_false;
 	window.passestado=p.pass_estado;
+	window.gpsestado=p.gps_estado;
 	window.llamadaSecreta=p.call;
 	window.sis_ip=p.sis_ip;
 	window.celCode=p.cel_code;
 	if(p.pass_estado!=0){
 		verificarPanico();
+	}
+	if(p.gps_estado!=0){
+		revisarBanner();
 	}
     }
 }
