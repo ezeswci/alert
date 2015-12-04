@@ -62,9 +62,9 @@ function activarGPS(){
 	estadoDeGPS(1);
 }
 function desactivarGPS(){
-	dejarDeTrasmitirGps();
-	borrarMensajes();
 	estadoDeGPS(0);
+	borrarMensajes();
+	dejarDeTrasmitirGps();
 	// Si el panico esta activado tiene que desactivar el panico, sino solo apaga el gps
 }
 function desactivarPanico(){
@@ -122,6 +122,7 @@ function activarPanicoRevision(){
 	//document.location.href = 'tel:+01148127101';
 }
 function estadoDePanico(numero){
+	alert("cambio el estado del panico"+numero);
 	window.passestado=numero;
 	if(numero==1){estadoDeGPS(numero);}
 	window.base.transaction(actualizarEstado, errorCB);
@@ -130,6 +131,7 @@ function actualizarEstado(tx) {
     tx.executeSql("UPDATE PASS SET pass_estado ='" +window.passestado+"'  WHERE rowid =1  ;", [],   updatePass, errorPass);
 }
 function estadoDeGPS(numero){
+	alert("cambio el estado del GPS"+numero);
 	window.gpsestado=numero;
 	revisarBanner();
 	window.base.transaction(actualizarEstadoGPS, errorCB);
