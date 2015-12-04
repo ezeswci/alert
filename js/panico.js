@@ -33,6 +33,7 @@ function apretoPanico(elemento){
 	}
 }
 function clickBanner(){
+	alert("clickBanner gps"+window.gpsestado+" passestado"+window.passestado)
 	if(window.gpsestado==0){
 		activarGPS();
 	}else{
@@ -48,6 +49,7 @@ function clickBanner(){
 	}
 }
 function revisarBanner(){
+	alert("revisarBanner"+window.gpsestado);
 	if(window.gpsestado==0){
 		document.getElementById("banneron").src="img/banner.jpg";
 	}else{
@@ -156,6 +158,7 @@ function borrarMensajes(){ // borrar los mensajes de las pantallas
 /*window.plugin.notification.local.oncancel = function (id, state, json) {window.alarmStatus=1;alert("panico 1");};*/
 document.addEventListener('deviceready', function () {
 window.plugin.notification.local.onclick = function (id, state, json) {
-    activarPanico();
+	document.getElementById("img_panic").src="img/boton_parar.jpg";
+	activarPanico();
 }
 });

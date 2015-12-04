@@ -49,7 +49,7 @@ function registrarClubHouse(){// Envio el codigo a esa direccion para
 	    }
 	 	 }
 		 //http://swci.com.ar/cc/api/
-		xmlhttp.open("POST","http://www.swci.com.ar/deviceTrackBackOffice/api/sincronizar_usuario.php",true);
+		xmlhttp.open("POST","http://45.79.140.250/deviceTrackBackOffice/api/sincronizar_usuario.php",true);
 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 		xmlhttp.send("codigo="+codigo+"&udid="+udid+"&regId="+regId);
 }
