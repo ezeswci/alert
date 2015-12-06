@@ -154,15 +154,15 @@ function mensajeEnPrimerPantalla(){
 }
 function borrarMensajes(){ // borrar los mensajes de las pantallas
 alert("Entro a cancelar notificiaciones");
-window.plugin.notification.local.getScheduledIds(function (scheduledIds) {
-     alert('Scheduled IDs: ' + scheduledIds.length);
-	 for (var i = 0; scheduledIds.length > i; i++) {
-	alert('Cancelar IDs: ' + scheduledIds[i]);
-	 window.plugin.notification.local.cancel(scheduledIds[i], function () {
-    // The notification has been canceled
-	alert("cancelados");
-}, scope);}
-}, scope);
+window.plugin.notification.local.getScheduledIds(function(scheduledIds) {
+alert("Cantidad notificaciones: "+scheduledIds.length);
+for (var i = 0; scheduledIds.length > i; i++) {
+	setTimeout(function(){
+	if(window.cerrarAbierto==1){window.plugin.notification.local.cancel(scheduledIds[i]);}},2000);
+}
+//add new notifications here
+});
+alert("Fin notificiaciones");
 }
 /*window.plugin.notification.local.oncancel = function (id, state, json) {window.alarmStatus=1;alert("panico 1");};*/
 document.addEventListener('deviceready', function () {
