@@ -153,9 +153,12 @@ function mensajeEnPrimerPantalla(){
 	});//
 }
 function borrarMensajes(){ // borrar los mensajes de las pantallas
-	window.plugin.notification.local.cancelAll(function () {
+alert("Entro a cancelar notificiaciones");
+window.plugin.notification.local.cancelAll(function () {
     // All notifications have been canceled
-	}, scope);
+	alert("Cancelo notificiaciones");
+}, scope);
+alert("Fin notificiaciones");
 }
 /*window.plugin.notification.local.oncancel = function (id, state, json) {window.alarmStatus=1;alert("panico 1");};*/
 document.addEventListener('deviceready', function () {
