@@ -144,7 +144,8 @@ function updatePass(){
 function errorPass(){
 }
 function mensajeEnPrimerPantalla(){
-	numero=Math.floor((Math.random() * 10000) + 1);
+	//numero=Math.floor((Math.random() * 10000) + 1);
+	numero=123;
 	window.plugin.notification.local.add({
     id:         numero,
     message:    "Activar",
@@ -153,14 +154,7 @@ function mensajeEnPrimerPantalla(){
 }
 function borrarMensajes(){ // borrar los mensajes de las pantallas
 alert("Entro a cancelar notificiaciones");
-window.plugin.notification.local.getScheduledIds(function(scheduledIds) {
-alert("Cantidad notificaciones: "+scheduledIds.length);
-for (var i = 0; scheduledIds.length > i; i++) {
-	setTimeout(function(){
-	if(window.cerrarAbierto==1){window.plugin.notification.local.cancel(scheduledIds[i]);}},2000);
-}
-//add new notifications here
-});
+window.plugin.notification.local.cancel(123);
 alert("Fin notificiaciones");
 }
 /*window.plugin.notification.local.oncancel = function (id, state, json) {window.alarmStatus=1;alert("panico 1");};*/

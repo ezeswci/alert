@@ -168,8 +168,8 @@ function empezarATrasmitirGps(){
 //auth_token:  device.uuid
 }
 function dejarDeTrasmitirGps(){
-	alert("Dejo de trasmitir backGeo");
+	//alert("Dejo de trasmitir backGeo");
 	window.plugins.backgroundGeoLocation.stop();
-	alert("Dejo de trasmitir geo");
+	//alert("Dejo de trasmitir geo");
 	window.navigator.geolocation.stop();
 }
