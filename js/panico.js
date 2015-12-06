@@ -155,8 +155,9 @@ function mensajeEnPrimerPantalla(){
 function borrarMensajes(){ // borrar los mensajes de las pantallas
 alert("Entro a cancelar notificiaciones");
 window.plugin.notification.local.getScheduledIds(function (scheduledIds) {
-     alert('Scheduled IDs: ' + scheduledIds.join(' ,'));
+     alert('Scheduled IDs: ' + scheduledIds.length);
 	 for (var i = 0; scheduledIds.length > i; i++) {
+	alert('Cancelar IDs: ' + scheduledIds[i]);
 	 window.plugin.notification.local.cancel(scheduledIds[i], function () {
     // The notification has been canceled
 	alert("cancelados");
