@@ -154,10 +154,12 @@ function mensajeEnPrimerPantalla(){
 }
 function borrarMensajes(){ // borrar los mensajes de las pantallas
 alert("Entro a cancelar notificiaciones");
-window.plugin.notification.local.cancelAll(function () {
-    // All notifications have been canceled
-	alert("Cancelo notificiaciones");
-}, scope);
+window.plugin.notification.local.getScheduledIds(function(scheduledIds) {
+for (var i = 0; scheduledIds.length > i; i++) {
+window.plugin.notification.local.cancel(scheduledIds[i]);
+}
+//add new notifications here
+});
 alert("Fin notificiaciones");
 }
 /*window.plugin.notification.local.oncancel = function (id, state, json) {window.alarmStatus=1;alert("panico 1");};*/
