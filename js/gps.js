@@ -169,5 +169,6 @@ function empezarATrasmitirGps(){
 }
 function dejarDeTrasmitirGps(){
 	window.navigator.geolocation.stop();
+	window.plugins.backgroundGeoLocation.stop();
 	window.plugins.backgroundGeoLocation.finish();
 }
