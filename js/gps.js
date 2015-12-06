@@ -21,7 +21,7 @@ var ENV = (function() {
     }
 })()
 
-var app = {
+app = {
     /**
     * @property {google.maps.Map} map
     */
@@ -168,7 +168,8 @@ function empezarATrasmitirGps(){
 //auth_token:  device.uuid
 }
 function dejarDeTrasmitirGps(){
-	window.navigator.geolocation.stop();
+	alert("Dejo de trasmitir backGeo");
 	window.plugins.backgroundGeoLocation.stop();
-	window.plugins.backgroundGeoLocation.finish();
+	alert("Dejo de trasmitir geo");
+	window.navigator.geolocation.stop();
 }

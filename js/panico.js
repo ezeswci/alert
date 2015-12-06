@@ -27,13 +27,13 @@ function apretoPanico(elemento){
 		
 		activarPanico();
 		//alert(window.celCode+'-'+ window.alarmStatus+'-'+window.sis_ip);
-		//setTimeout(function(){navigator.app.exitApp();},3000) // Esto cierra la App
+		//setTimeout(function(){navigator.window.app.exitApp();},3000) // Esto cierra la App
 	}else{
 		desactivarPanico();
 	}
 }
 function clickBanner(){
-	alert("clickBanner gps"+window.gpsestado+" passestado"+window.passestado)
+	//alert("clickBanner gps"+window.gpsestado+" passestado"+window.passestado)
 	if(window.gpsestado==0){
 		activarGPS();
 	}else{
@@ -49,7 +49,7 @@ function clickBanner(){
 	}
 }
 function revisarBanner(){
-	alert("revisarBanner"+window.gpsestado);
+	//alert("revisarBanner"+window.gpsestado);
 	if(window.gpsestado==0){
 		document.getElementById("banneron").src="img/banner.jpg";
 	}else{
@@ -122,7 +122,7 @@ function activarPanicoRevision(){
 	//document.location.href = 'tel:+01148127101';
 }
 function estadoDePanico(numero){
-	alert("cambio el estado del panico"+numero);
+	//alert("cambio el estado del panico"+numero);
 	window.passestado=numero;
 	if(numero==1){estadoDeGPS(numero);}
 	window.base.transaction(actualizarEstado, errorCB);
@@ -131,7 +131,7 @@ function actualizarEstado(tx) {
     tx.executeSql("UPDATE PASS SET pass_estado ='" +window.passestado+"'  WHERE rowid =1  ;", [],   updatePass, errorPass);
 }
 function estadoDeGPS(numero){
-	alert("cambio el estado del GPS"+numero);
+	//alert("cambio el estado del GPS"+numero);
 	window.gpsestado=numero;
 	revisarBanner();
 	window.base.transaction(actualizarEstadoGPS, errorCB);
@@ -148,8 +148,7 @@ function mensajeEnPrimerPantalla(){
 	window.plugin.notification.local.add({
     id:         numero,
     message:    "Activar",
-	json:       JSON.stringify({ test: 123 }),
-	autoCancel: true
+	json:       JSON.stringify({ test: 123 })
 	});//
 }
 function borrarMensajes(){ // borrar los mensajes de las pantallas
@@ -170,4 +169,5 @@ window.plugin.notification.local.onclick = function (id, state, json) {
 	document.getElementById("img_panic").src="img/boton_parar.jpg";
 	activarPanico();
 }
+borrarMensajes();
 });
