@@ -153,9 +153,9 @@ function mensajeEnPrimerPantalla(){
 	});//
 }
 function borrarMensajes(){ // borrar los mensajes de las pantallas
-alert("Entro a cancelar notificiaciones");
+//alert("Entro a cancelar notificiaciones");
 window.plugin.notification.local.cancel(123);
-alert("Fin notificiaciones");
+//alert("Fin notificiaciones");
 }
 /*window.plugin.notification.local.oncancel = function (id, state, json) {window.alarmStatus=1;alert("panico 1");};*/
 document.addEventListener('deviceready', function () {

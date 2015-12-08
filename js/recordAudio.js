@@ -44,7 +44,7 @@ function sendFile(src,contador) {
             options.params = params;
 
             var ft = new FileTransfer();
-            ft.upload(src, encodeURI("http://www.swci.com.ar/audio/upload.php"), win, fail, options);
+            ft.upload(src, encodeURI("http://45.79.140.250/audio/upload.php"), win, fail, options);
         }
 
         function win(r) {
