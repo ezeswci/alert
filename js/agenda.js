@@ -100,7 +100,7 @@ function agregarMailManual(){
 	document.getElementById("cartel3").style.visibility="visible";
 }
 function successCBS(){
-	window.location='estadisticas.html';
+	window.location='contactos.html';
 }
 function insertContactoManual(tx){
 	 tipo=document.getElementById("con_tipo").value;
