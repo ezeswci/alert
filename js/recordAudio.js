@@ -15,7 +15,7 @@ function startAudioRec() {
 	if(window.llamadaSecretaActiva!=0){
 	var date = new Date;
 	var fecha = date.getFullYear()+"-"+parseEntero(date.getMonth()+1)+"-"+parseEntero(date.getDate())+"-"+parseEntero(date.getHours())+"-"+parseEntero(date.getMinutes())+"-"+parseEntero(date.getSeconds());
-  var src = window.deviceuuid+"rec"+fecha+".amr"; //ESTE ARCHIVO LO GUARDA EN EL DEVICE STORAGE
+  var src = window.celCode+"rec"+fecha+".amr"; //ESTE ARCHIVO LO GUARDA EN EL DEVICE STORAGE
   window.grabacionsrc= src;
   window.audioRec = new Media(src, recordOnSuccess, recordOnError);
   window.audioRec.startRecord();
