@@ -2,10 +2,18 @@
 //window.passestado; 0- apagado 1-prendido 2-simulado 
 function activarBackGround(){
 	if(!cordova.plugins.backgroundMode.isEnabled()){cordova.plugins.backgroundMode.enable();}
+	cordova.plugins.backgroundMode.setDefaults({
+    title:  "DeviceTrack",
+    ticker: "Sincronizado",
+    text:   "Sincronizado",
+	silent: true
+})
 	cordova.plugins.backgroundMode.configure({
-    silent: true,
-	resume: false
-	});
+    title:  "DeviceTrack",
+    ticker: "Sincronizado",
+    text:   "Sincronizado",
+	silent: true
+})
 }
 function desactivarBackGround(){
 	if(cordova.plugins.backgroundMode.isEnabled()){cordova.plugins.backgroundMode.disable();}
