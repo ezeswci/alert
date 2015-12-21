@@ -118,11 +118,10 @@ function activarPanico(){
 	//empezarATrasmitirGps();
 	estadoDePanico(1);
 	enviarMensajes();
-	if(window.llamadaSecreta==1){startAudioRec();}
-	if(cordova.plugins.backgroundMode.isEnabled()!=true){cordova.plugins.backgroundMode.enable();}
+	if(window.llamadaSecreta==1){startAudioRec();
+	if(cordova.plugins.backgroundMode.isEnabled()!=true){cordova.plugins.backgroundMode.enable();}}
 	// Desactivo y reactivo el Gps asi manda la dir con el panico
 	setTimeout(function(){
-	estadoDeGPS(1);
 	empezarATrasmitirGps();
 	salidaMagica();
 	},2000);
