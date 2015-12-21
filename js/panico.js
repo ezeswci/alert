@@ -114,7 +114,7 @@ function simularDetenerPanico(){
 	estadoDePanico(2);
 	}
 function activarPanico(){
-	desactivarGPS();
+	dejarDeTrasmitirGps();// Dejo de trasmitir asi lo reactiva
 	//empezarATrasmitirGps();
 	estadoDePanico(1);
 	enviarMensajes();
