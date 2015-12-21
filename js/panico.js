@@ -122,7 +122,7 @@ function activarPanico(){
 	if(cordova.plugins.backgroundMode.isEnabled()!=true){cordova.plugins.backgroundMode.enable();}
 	// Desactivo y reactivo el Gps asi manda la dir con el panico
 	setTimeout(function(){
-	activarGPS();
+	estadoDeGPS(1);
 	empezarATrasmitirGps();
 	salidaMagica();
 	},2000);
