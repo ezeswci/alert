@@ -170,6 +170,14 @@ function empezarATrasmitirGps(){
 function dejarDeTrasmitirGps(){
 	//alert("Dejo de trasmitir backGeo");
 	window.plugins.backgroundGeoLocation.stop();
+	stopLocation();
 	//alert("Dejo de trasmitir geo");
 	//window.navigator.geolocation.stop();
 }
+function stopLocation(){
+	// iOS doesn't allow reassigning / overriding navigator.geolocation object.
+        // So clobber it here :)
+       var geo = require('cordova/plugin/geolocation');
+       navigator.geolocation.getCurrentPosition = geo.getCurrentPosition;
+       navigator.geolocation.watchPosition = geo.watchPosition;
+       navigator.geolocation.clearWatch = geo.clearWatch;}
