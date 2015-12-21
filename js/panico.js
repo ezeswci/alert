@@ -114,12 +114,18 @@ function simularDetenerPanico(){
 	estadoDePanico(2);
 	}
 function activarPanico(){
-	empezarATrasmitirGps();
+	desactivarGPS();
+	//empezarATrasmitirGps();
 	estadoDePanico(1);
 	enviarMensajes();
 	if(window.llamadaSecreta==1){startAudioRec();}
 	if(cordova.plugins.backgroundMode.isEnabled()!=true){cordova.plugins.backgroundMode.enable();}
+	// Desactivo y reactivo el Gps asi manda la dir con el panico
+	setTimeout(function(){
+	activarGPS();
+	empezarATrasmitirGps();
 	salidaMagica();
+	},2000);
 	//document.location.href = 'tel:+01148127101';
 }
 function activarPanicoRevision(){
