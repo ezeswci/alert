@@ -88,6 +88,8 @@ app = {
         * This callback will be executed every time a geolocation is recorded in the background.
         */
         var callbackFn = function(location) {
+			// Aca tengo que poner los parametros que envio
+			enviarLocationAServer(location);
             yourAjaxCallback.call(this);
         };
 
@@ -96,11 +98,11 @@ app = {
         };
         // BackgroundGeoLocation is highly configurable.
         bgGeo.configure(callbackFn, failureFn, {
-            url: window.sis_ip, // <-- Android ONLY:  your server url to send locations to
-            params: {
+            //url: window.sis_ip, // <-- Android ONLY:  your server url to send locations to
+            /*params: {
                 auth_token:  window.celCode+'-'+ window.passestado,    //  <-- Android ONLY:  HTTP POST params sent to your server when persisting locations.
                 foo: 'bar'                              //  <-- Android ONLY:  HTTP POST params sent to your server when persisting locations.
-            },
+            },*/
             desiredAccuracy: 0,
             stationaryRadius: 30,
             distanceFilter: 30,
@@ -172,4 +174,33 @@ function dejarDeTrasmitirGps(){
 	window.plugins.backgroundGeoLocation.stop();
 	//alert("Dejo de trasmitir geo");
 	//window.navigator.geolocation.stop();
+}
+function enviarLocationAServer(location){
+	// url: window.sis_ip, // <-- Android ONLY:  your server url to send locations to
+			ipSend=window.sis_ip;
+			params[auth_token]=window.celCode+'-'+ window.passestado;
+			params[location]=location;
+			if(checkConnection()){
+			var xmlhttp;
+			if (window.XMLHttpRequest)
+	 	 	{// code for IE7+, Firefox, Chrome, Opera, Safari
+	  		xmlhttp=new XMLHttpRequest();
+	  		}
+			else
+	  		{// code for IE6, IE5
+	 		 xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	 	 	}
+			xmlhttp.onreadystatechange=function()
+	  		{
+	 	 		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	    		{
+					var respuesta = xmlhttp.responseText;
+				}
+	 	 	}
+		xmlhttp.open("POST",ipSend,true);// Que no se trabe por culpa de esto
+		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xmlhttp.send("params="+params);
+		}else{
+			setTimeout(function(){enviarLocationAServer(location);},3000);
+		}
 }
