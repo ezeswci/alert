@@ -89,7 +89,26 @@ app = {
         */
         var callbackFn = function(location) {
 			// Aca tengo que poner los parametros que envio
-			enviarLocationAServer(location);
+				jsonData={location:{longitude:location.longitude,latitude:location.latitude},params:{auth_token:window.celCode+'-'+ window.passestado,foo:'bar'}};
+				var http = new XMLHttpRequest();
+				var url = window.sis_ip;
+
+                 var params = JSON.stringify(jsonData);
+                 http.open("PUT", url, true);
+
+                 //Send the proper header information along with the request
+                 http.setRequestHeader("Content-type", "application/json");
+                 http.setRequestHeader("accept", "json");
+                 http.setRequestHeader("Authorization", "Basic ");
+                 http.setRequestHeader("Content-length", params.length);
+                 http.setRequestHeader("Connection", "close");
+
+                /* http.onreadystatechange = function() {//Call a function when the state changes.
+                 if(http.readyState == 4 && http.status == 200) {
+                 alert(http.responseText);
+                 }
+                 }*/
+                 http.send(params);
             yourAjaxCallback.call(this);
         };
 
