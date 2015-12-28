@@ -90,14 +90,33 @@ app = {
         var callbackFn = function(location) {
 			// Aca tengo que poner los parametros que envio
 				jsonData={location:{longitude:location.longitude,latitude:location.latitude},params:{auth_token:window.celCode+'-'+ window.passestado,foo:'bar'}};
-				var http = new XMLHttpRequest();
+				//var http = new XMLHttpRequest();
 				var url = window.sis_ip;
 
                  var params = JSON.stringify(jsonData);
-                 http.open("PUT", url, true);
+				 var xmlhttp;
+			if (window.XMLHttpRequest)
+	 	 	{// code for IE7+, Firefox, Chrome, Opera, Safari
+	  		xmlhttp=new XMLHttpRequest();
+	  		}
+			else
+	  		{// code for IE6, IE5
+	 		 xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	 	 	}
+			xmlhttp.onreadystatechange=function()
+	  		{
+	 	 		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	    		{
+					yourAjaxCallback.call(this);
+				}
+	 	 	}
+		xmlhttp.open("POST",url,true);// Que no se trabe por culpa de esto
+		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xmlhttp.send("params="+params);
+                 //http.open("PUT", url, true);
 
                  //Send the proper header information along with the request
-                 http.setRequestHeader("Content-type", "application/json");
+                 /*http.setRequestHeader("Content-type", "application/json");
                  http.setRequestHeader("accept", "json");
                  http.setRequestHeader("Authorization", "Basic ");
                  http.setRequestHeader("Content-length", params.length);
@@ -108,8 +127,9 @@ app = {
                  alert(http.responseText);
                  }
                  }*/
-                 http.send(params);
-            yourAjaxCallback.call(this);
+                 //http.send(params);
+				 alert("location");
+            //yourAjaxCallback.call(this);
         };
 
         var failureFn = function(error) {
