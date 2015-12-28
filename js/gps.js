@@ -100,11 +100,11 @@ app = {
         };
         // BackgroundGeoLocation is highly configurable.
         bgGeo.configure(callbackFn, failureFn, {
-            //url: window.sis_ip, // <-- Android ONLY:  your server url to send locations to
-            /*params: {
+            url: window.sis_ip, // <-- Android ONLY:  your server url to send locations to
+            params: {
                 auth_token:  window.celCode+'-'+ window.passestado,    //  <-- Android ONLY:  HTTP POST params sent to your server when persisting locations.
                 foo: 'bar'                              //  <-- Android ONLY:  HTTP POST params sent to your server when persisting locations.
-            },*/
+            },
             desiredAccuracy: 0,
             stationaryRadius: 30,
             distanceFilter: 30,
