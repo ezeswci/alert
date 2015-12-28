@@ -91,7 +91,8 @@ app = {
 			// Aca tengo que poner los parametros que envio
 				jsonData={location:location,params:{auth_token:window.celCode+'-'+ window.passestado,foo:'bar2'}};
 				//var http = new XMLHttpRequest();
-				enviarLocationAServer(jsonData);
+				data=JSON.stringify(jsonData);
+				enviarLocationAServer(data);
             	yourAjaxCallback.call(this);
         };
 
