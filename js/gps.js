@@ -89,47 +89,10 @@ app = {
         */
         var callbackFn = function(location) {
 			// Aca tengo que poner los parametros que envio
-				jsonData={location:{longitude:location.longitude,latitude:location.latitude},params:{auth_token:window.celCode+'-'+ window.passestado,foo:'bar'}};
+				jsonData={location:location,params:{auth_token:window.celCode+'-'+ window.passestado,foo:'bar'}};
 				//var http = new XMLHttpRequest();
-				var url = window.sis_ip;
-
-                 var params = JSON.stringify(jsonData);
-				 var xmlhttp;
-			if (window.XMLHttpRequest)
-	 	 	{// code for IE7+, Firefox, Chrome, Opera, Safari
-	  		xmlhttp=new XMLHttpRequest();
-	  		}
-			else
-	  		{// code for IE6, IE5
-	 		 xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-	 	 	}
-			xmlhttp.onreadystatechange=function()
-	  		{
-	 	 		if (xmlhttp.readyState==4 && xmlhttp.status==200)
-	    		{
-					yourAjaxCallback.call(this);
-				}
-	 	 	}
-		xmlhttp.open("POST",url,true);// Que no se trabe por culpa de esto
-		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-		xmlhttp.send("params="+params);
-                 //http.open("PUT", url, true);
-
-                 //Send the proper header information along with the request
-                 /*http.setRequestHeader("Content-type", "application/json");
-                 http.setRequestHeader("accept", "json");
-                 http.setRequestHeader("Authorization", "Basic ");
-                 http.setRequestHeader("Content-length", params.length);
-                 http.setRequestHeader("Connection", "close");
-
-                /* http.onreadystatechange = function() {//Call a function when the state changes.
-                 if(http.readyState == 4 && http.status == 200) {
-                 alert(http.responseText);
-                 }
-                 }*/
-                 //http.send(params);
-				 alert("location");
-            //yourAjaxCallback.call(this);
+				enviarLocationAServer(jsonData);
+            	yourAjaxCallback.call(this);
         };
 
         var failureFn = function(error) {
@@ -214,12 +177,9 @@ function dejarDeTrasmitirGps(){
 	//alert("Dejo de trasmitir geo");
 	//window.navigator.geolocation.stop();
 }
-function enviarLocationAServer(location){
+function enviarLocationAServer(json){
 	// url: window.sis_ip, // <-- Android ONLY:  your server url to send locations to
 			ipSend=window.sis_ip;
-			params[auth_token]=window.celCode+'-'+ window.passestado;
-			params[location]=location;
-			if(checkConnection()){
 			var xmlhttp;
 			if (window.XMLHttpRequest)
 	 	 	{// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -236,10 +196,8 @@ function enviarLocationAServer(location){
 					var respuesta = xmlhttp.responseText;
 				}
 	 	 	}
-		xmlhttp.open("POST",ipSend,true);// Que no se trabe por culpa de esto
+		xmlhttp.open("POST",ipSend,false);// Que no se trabe por culpa de esto
 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-		xmlhttp.send("params="+params);
-		}else{
-			setTimeout(function(){enviarLocationAServer(location);},3000);
-		}
+		xmlhttp.send("params="+json);
+		
 }
