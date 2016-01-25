@@ -109,8 +109,8 @@ app = {
             desiredAccuracy: 0,
             stationaryRadius: 30,
             distanceFilter: 30,
-            notificationTitle: 'B', // <-- android only, customize the title of the notification
-            notificationText: 'E', // <-- android only, customize the text of the notification
+            notificationTitle: 'Dev-Track', // <-- android only, customize the title of the notification
+            notificationText: 'On', // <-- android only, customize the text of the notification
             activityType: 'AutomotiveNavigation',
             debug: false, // <-- enable this hear sounds for background-geolocation life-cycle.
             stopOnTerminate: true // <-- enable this to clear background location settings when the app terminates

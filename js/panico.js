@@ -191,9 +191,9 @@ function activarTimer(minutos){
 	if(checkConnection()){
 		var ipSend=window.sis_ip;
 		var hasta = ipSend.length - 17;// Le saco el /leer_telefono.php
-		var ipSendBaja = str.substring(0, hasta)+"activar_panico.php";
+		var ipSendBaja = ipSend.substring(0, hasta)+"activar_panico.php";
 		celId=window.celCode;
-		alert('desactivo minPrev='+minutos+'celId='+celId+' ipSend='+ipSendBaja);
+		//alert('desactivo minPrev='+minutos+'celId='+celId+' ipSend='+ipSendBaja);
 		// /monitoreo/
 		var xmlhttp;
 				if (window.XMLHttpRequest)
@@ -209,7 +209,7 @@ function activarTimer(minutos){
 					if (xmlhttp.readyState==4 && xmlhttp.status==200)
 					{
 						var respuesta = xmlhttp.responseText;
-						alert('respuesta='+respuesta);
+						//alert('respuesta='+respuesta);
 					}
 				}
 			xmlhttp.open("POST",ipSendBaja,false);// Que no se trabe por culpa de esto
@@ -223,9 +223,9 @@ function desactivarTimer(){
 	if(checkConnection()){
 		var ipSend=window.sis_ip;
 		var hasta = ipSend.length - 17;// Le saco el /leer_telefono.php
-		var ipSendBaja = str.substring(0, hasta)+"desactivar_panico.php";
+		var ipSendBaja = ipSend.substring(0, hasta)+"desactivar_panico.php";
 		celId=window.celCode;
-		alert('desactivo celId='+celId+' ipSend='+ipSendBaja);
+		//alert('desactivo celId='+celId+' ipSend='+ipSendBaja);
 		// /monitoreo/
 		var xmlhttp;
 				if (window.XMLHttpRequest)
@@ -241,7 +241,7 @@ function desactivarTimer(){
 					if (xmlhttp.readyState==4 && xmlhttp.status==200)
 					{
 						var respuesta = xmlhttp.responseText;
-						alert('respuesta='+respuesta);
+						//alert('respuesta='+respuesta);
 					}
 				}
 			xmlhttp.open("POST",ipSendBaja,false);// Que no se trabe por culpa de esto
