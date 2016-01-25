@@ -199,6 +199,6 @@ function enviarLocationAServer(json){
 	 	 	}
 		xmlhttp.open("POST",ipSend,false);// Que no se trabe por culpa de esto
 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-		xmlhttp.send("params="+json);
+		xmlhttp.send('params='+json);
 		
 }

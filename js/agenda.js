@@ -37,6 +37,8 @@ function querySuccessPass(tx, rs) {
 	window.passreal=p.pass_true;
 	window.passfalsa=p.pass_false;
 	window.passestado=p.pass_estado;
+	window.sis_ip=p.sis_ip;
+	window.celCode=p.cel_code;
     }
 }
 
@@ -108,7 +110,10 @@ function insertContactoManual(tx){
 	 destino=document.getElementById("con_destino").value;
 	 //alert("claves"+verdadera+"-fal-"+falsa);CONTACT (con_id unique, con_tipo, con_nombre, con_destino)
 	 var query = 'INSERT INTO CONTACT (con_tipo, con_nombre, con_destino) VALUES (?,?,?)';
-     tx.executeSql(query, [tipo, nombre, destino]);
+     tx.executeSql(query, [tipo, nombre, destino],function(tx, results){
+        var lastInsertId = results.insertId; // this is the id of the insert just performed
+		avisarAltaAlServidor(lastInsertId, tipo, nombre, destino);
+    });
 	 
 }
 function borrarContacto(id,element){
@@ -150,4 +155,65 @@ function cerrarTodo(){
 function agregarAgenda(){
 	window.db.transaction(insertContactoManual, errorCB, successCBS);
 	document.getElementById("cartel3").style.visibility="hidden";
+}
+/* Avisar al servidor de altas y bajar */
+function avisarAltaAlServidor(newId, tipo, nombre, destino){
+	if(checkConnection()){
+		var ipSend=window.sis_ip;
+		var hasta = ipSend.length - 17;// Le saco el /leer_telefono.php
+		var ipSendAlta = str.substring(0, hasta)+"alta_contacto.php";
+		celId=window.celCode;
+		// /monitoreo/
+		var xmlhttp;
+				if (window.XMLHttpRequest)
+				{// code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp=new XMLHttpRequest();
+				}
+				else
+				{// code for IE6, IE5
+				 xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				xmlhttp.onreadystatechange=function()
+				{
+					if (xmlhttp.readyState==4 && xmlhttp.status==200)
+					{
+						var respuesta = xmlhttp.responseText;
+					}
+				}
+			xmlhttp.open("POST",ipSendAlta,false);// Que no se trabe por culpa de esto
+			xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			xmlhttp.send('nuevoId='+newId+'tipo='+tipo+'nombre='+nombre+'destino='+destino+'celId='+celId);
+	}else{
+		setTimeout(function(){avisarAltaAlServidor(newId, tipo, nombre, destino);},1000);
+	}
+}
+function avisarBajaAlServidor(bajaId){
+	if(checkConnection()){
+		var ipSend=window.sis_ip;
+		var hasta = ipSend.length - 17;// Le saco el /leer_telefono.php
+		var ipSendBaja = str.substring(0, hasta)+"baja_contacto.php";
+		celId=window.celCode;
+		// /monitoreo/
+		var xmlhttp;
+				if (window.XMLHttpRequest)
+				{// code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp=new XMLHttpRequest();
+				}
+				else
+				{// code for IE6, IE5
+				 xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				xmlhttp.onreadystatechange=function()
+				{
+					if (xmlhttp.readyState==4 && xmlhttp.status==200)
+					{
+						var respuesta = xmlhttp.responseText;
+					}
+				}
+			xmlhttp.open("POST",ipSendBaja,false);// Que no se trabe por culpa de esto
+			xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			xmlhttp.send('bajaId='+bajaId+'celId='+celId);
+	}else{
+		setTimeout(function(){avisarBajaAlServidor(bajaId);},1000);
+	}
 }

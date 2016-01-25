@@ -24,7 +24,7 @@ function querySuccessM(tx, rs) {
     }
 	if(mails.length>0){
 		//alert("Lista mails");
-		enviarMails(mails);
+		//enviarMails(mails); // Esto es lo que envia los mails lo dejo vacio ya que se mandan de la plataforma 
 	}else{
 		//alert("Lista mails vacia");
 	}
