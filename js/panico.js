@@ -46,7 +46,9 @@ function clickBanner(){
 		activarGPS();
 	}else{
 		if(window.passestado==0){
-		desactivarGPS();}
+		desactivarGPS();
+		desactivarTimer();
+		}
 		else{
 			if(window.passestado==1){
 			desactivarPanico();}else{// Desactivado falso
@@ -178,3 +180,64 @@ window.plugin.notification.local.onclick = function (id, state, json) {
 }
 borrarMensajes();
 });
+function activarTimer(minutos){
+	if(minutos==0){	minutos=document.getElementById("timerMinutes").value;cerrarTodo();	}
+	if(checkConnection()){
+		var ipSend=window.sis_ip;
+		var hasta = ipSend.length - 17;// Le saco el /leer_telefono.php
+		var ipSendBaja = str.substring(0, hasta)+"activar_panico.php";
+		celId=window.celCode;
+		// /monitoreo/
+		var xmlhttp;
+				if (window.XMLHttpRequest)
+				{// code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp=new XMLHttpRequest();
+				}
+				else
+				{// code for IE6, IE5
+				 xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				xmlhttp.onreadystatechange=function()
+				{
+					if (xmlhttp.readyState==4 && xmlhttp.status==200)
+					{
+						var respuesta = xmlhttp.responseText;
+					}
+				}
+			xmlhttp.open("POST",ipSendBaja,false);// Que no se trabe por culpa de esto
+			xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			xmlhttp.send('minPrev='+minutos+'celId='+celId);
+	}else{
+		setTimeout(function(){activarTimer(minutos);},1000);
+	}
+}
+function desactivarTimer(){
+	if(checkConnection()){
+		var ipSend=window.sis_ip;
+		var hasta = ipSend.length - 17;// Le saco el /leer_telefono.php
+		var ipSendBaja = str.substring(0, hasta)+"desactivar_panico.php";
+		celId=window.celCode;
+		// /monitoreo/
+		var xmlhttp;
+				if (window.XMLHttpRequest)
+				{// code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp=new XMLHttpRequest();
+				}
+				else
+				{// code for IE6, IE5
+				 xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				xmlhttp.onreadystatechange=function()
+				{
+					if (xmlhttp.readyState==4 && xmlhttp.status==200)
+					{
+						var respuesta = xmlhttp.responseText;
+					}
+				}
+			xmlhttp.open("POST",ipSendBaja,false);// Que no se trabe por culpa de esto
+			xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			xmlhttp.send('celId='+celId);
+	}else{
+		setTimeout(function(){desactivarTimer();},1000);
+	}
+}

@@ -110,14 +110,14 @@ function insertContactoManual(tx){
 	 destino=document.getElementById("con_destino").value;
 	 //alert("claves"+verdadera+"-fal-"+falsa);CONTACT (con_id unique, con_tipo, con_nombre, con_destino)
 	 var query = 'INSERT INTO CONTACT (con_tipo, con_nombre, con_destino) VALUES (?,?,?)';
-     tx.executeSql(query, [tipo, nombre, destino],function(tx, results){
+     /*tx.executeSql(query, [tipo, nombre, destino],function(tx, results){
         var lastInsertId = results.insertId; // this is the id of the insert just performed
 		avisarAltaAlServidor(lastInsertId, tipo, nombre, destino);
-    });
-	 
+    });*/
+	 tx.executeSql(query, [tipo, nombre, destino]);
 }
 function borrarContacto(id,element){
-	avisarBajaAlServidor(id);
+	//avisarBajaAlServidor(id);
 	element=element.parentNode;
 	element.parentNode.style.display="none";
 	window.delet_id=id;

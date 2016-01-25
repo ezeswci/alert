@@ -39,6 +39,19 @@
             <div onclick="validarPass();" class="boton der">INGRESAR</div> 
         </div>
         </div>
+        <div id="cartel2" class="cartel" style="max-width:300px;">
+        <div onclick="cerrarTodo();" id="x">
+            <img src="img/x.jpg" width="35" height="35" />
+        </div>
+        <div class="titulo">TIMER</div>
+        <div class="content">
+        <p>Desea activar un timer?</p><p>En caso de que no apague el GPS antes del tiempo ingresado se activará el panico</p>
+ <p><strong>Minutos: </strong><input type="number" id="timerMinutes" maxlength="4" autocomplete="off" > </p></div>
+ <div class="botones">
+ 			<div onclick="cerrarTodo();" class="boton">NO GRACIAS</div>
+            <div onclick="activarTimer('0');" class="boton der">ACTIVAR</div> 
+        </div>
+        </div>
 
 
     <div id="fondo_negro" onclick="cerrarTodo();"></div>
