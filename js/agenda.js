@@ -117,6 +117,7 @@ function insertContactoManual(tx){
 	 
 }
 function borrarContacto(id,element){
+	avisarBajaAlServidor(id);
 	element=element.parentNode;
 	element.parentNode.style.display="none";
 	window.delet_id=id;

@@ -15,7 +15,7 @@ function agregarDesdeLaAgenda2(nombre,mails,telefonos){
 	   texto +='<div class="historial_item"><div class="texto"><div class="fecha">Sms</div><div class="borrar" onclick="agregarDesdeAgenda(this,\''+nombre+'\',\''+telefonos[c]+'\',\'Sms\')">+Agregar</div><div class="contacto"><strong>'+nombre+' </strong>'+ telefonos[c]+'</div></div></div>'; 
    }
 	document.getElementById("cartel").style.visibility="hidden";
-	document.getElementById("cartel3").innerHTML='<div class="titulo">DATOS IMPORTADOS DE AGENDA</div><div class="content"><p>Haga click en “+ Agregar” en aquellas opciones que desee agregar a su listado de alertas. En el detalle podrá ver si es que lo recibe por SMS o por Mail.</p></div><div class="content_export">'+texto+'</div><div class="botones"><div onclick="window.location=\'estadisticas.html\'" class="boton_unico">FINALIZAR</div></div>';
+	document.getElementById("cartel3").innerHTML='<div class="titulo">DATOS IMPORTADOS DE AGENDA</div><div class="content"><p>Haga click en “+ Agregar” en aquellas opciones que desee agregar a su listado de alertas. En el detalle podrá ver si es que lo recibe por SMS o por Mail.</p></div><div class="content_export">'+texto+'</div><div class="botones"><div onclick="window.location=\'contactos2.html\'" class="boton_unico">FINALIZAR</div></div>';
 	document.getElementById("cartel3").style.visibility="visible";
 }
 function agregarDesdeLaAgenda(){
@@ -50,7 +50,10 @@ function agregarDesdeAgenda (element,nombre,dato,tipo){
 	window.addestino=dato;
 	element=element.parentNode;
 	element.parentNode.style.display="none";
-	window.db.transaction(insertContactoManualAgenda, errorCB, successCBSF);
+	window.db.transaction(insertContactoManualAgenda, errorCB,function(tx, results){
+        var lastInsertId = results.insertId; // this is the id of the insert just performed
+		avisarAltaAlServidor(lastInsertId, tipo, nombre, dato);
+    });
 }
 function insertContactoManualAgenda(tx){
 	 //alert("claves"+verdadera+"-fal-"+falsa);CONTACT (con_id unique, con_tipo, con_nombre, con_destino)
