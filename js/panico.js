@@ -44,6 +44,7 @@ function clickBanner(){
 	//alert("clickBanner gps"+window.gpsestado+" passestado"+window.passestado)
 	if(window.gpsestado==0){
 		activarGPS();
+		activarMuestraMsjesTimer();
 	}else{
 		if(window.passestado==0){
 		desactivarGPS();
@@ -82,6 +83,7 @@ function desactivarPanico(){
 	document.getElementById("fondo_negro").style.visibility="visible";
 }
 function cerrarTodo(){
+	document.getElementById("cartel2").style.visibility="hidden";
 	document.getElementById("cartel").style.visibility="hidden";
 	document.getElementById("fondo_negro").style.visibility="hidden";
 }
@@ -180,6 +182,10 @@ window.plugin.notification.local.onclick = function (id, state, json) {
 }
 borrarMensajes();
 });
+function activarMuestraMsjesTimer(){
+	document.getElementById("cartel2").style.visibility="visible";
+	document.getElementById("fondo_negro").style.visibility="visible";
+}
 function activarTimer(minutos){
 	if(minutos==0){	minutos=document.getElementById("timerMinutes").value;cerrarTodo();	}
 	if(checkConnection()){
