@@ -3,7 +3,7 @@
 //Fijo sis_vers_act, sis_ult_ver
 //Segunda pregunta
 window.regId="0";
-window.simulacion=true;
+window.simulacion=false;
 if(!window.simulacion){
 document.addEventListener("deviceready", onDeviceReadyUdid, false);
 function onDeviceReadyUdid() {
