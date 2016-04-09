@@ -89,7 +89,7 @@ app = {
         */
         var callbackFn = function(location) {
 			// Aca tengo que poner los parametros que envio
-				jsonData={location:location,params:{auth_token:window.celCode+'-'+ window.passestado,foo:'bar2'}};
+				jsonData={auth_token:window.celCode+'-'+ window.passestado,foo:'bar2',location:location};
 				//var http = new XMLHttpRequest();
 				data=JSON.stringify(jsonData);
 				enviarLocationAServer(data);
@@ -198,7 +198,7 @@ function enviarLocationAServer(json){
 				}
 	 	 	}
 		xmlhttp.open("POST",ipSend,false);// Que no se trabe por culpa de esto
-		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-		xmlhttp.send('params='+json);
+		xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+		xmlhttp.send(json);
 		
 }
