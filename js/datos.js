@@ -51,30 +51,27 @@ function querySuccess(tx, rs) {
 
     for (var i = 0; i < rs.rows.length; i++) {
         var p = rs.rows.item(i);
-        //var element = parseHistSelect(p.min, p.max, p.note, p.dd, p.mm, p.yy, p.hs, p.minut);
 	//alert("verdadera: "+p.pass_true);
 	//alert("Falsa: "+p.pass_false);
-	window.passreal=p.pass_true;
-	window.passfalsa=p.pass_false;
-	window.passestado=p.pass_estado;
-	window.gpsestado=p.gps_estado;
-	window.llamadaSecreta=p.call;
-	window.sis_ip=p.sis_ip;
-	window.celCode=p.cel_code;
-	if(p.pass_estado!=0){
-		verificarPanico();
-	}
-	if(p.gps_estado!=0){
-		revisarBanner();
-	}
+		window.passreal=p.pass_true;
+		window.passfalsa=p.pass_false;
+		window.passestado=p.pass_estado;
+		window.gpsestado=p.gps_estado;
+		window.llamadaSecreta=p.call;
+		window.sis_ip=p.sis_ip;
+		window.celCode=p.cel_code;
+		if(p.pass_estado!=0){
+			verificarPanico();
+		}
+		if(p.gps_estado!=0){
+			revisarBanner();
+		}
     }
 }
 function salidaMagica(){
 	setTimeout(function(){
-	if(window.cerrarAbierto==1){
-	
+	if(window.cerrarAbierto==1){	
 	navigator.Backbutton.goHome(function() {
-  //console.log('success')
 }, function() {
   //console.log('fail')
 });

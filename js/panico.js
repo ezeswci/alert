@@ -18,7 +18,7 @@ function activarBackGround(){
 function desactivarBackGround(){
 	if(cordova.plugins.backgroundMode.isEnabled()){cordova.plugins.backgroundMode.disable();}
 }
-window.onload=verificarPanico();
+//window.onload=verificarPanico();
 function verificarPanico(){
 	if (window.passestado==1){
 		document.getElementById("img_panic").src="img/boton_parar.jpg";
@@ -29,19 +29,14 @@ function verificarPanico(){
 		}}
 }
 function apretoPanico(elemento){
-	//alert(elemento.src);
 	if(elemento.src.indexOf("boton_empezar")!=-1){
-		elemento.src="img/boton_parar.jpg";
-		
+		elemento.src="img/boton_parar.jpg";		
 		activarPanico();
-		//alert(window.celCode+'-'+ window.alarmStatus+'-'+window.sis_ip);
-		//setTimeout(function(){navigator.window.app.exitApp();},3000) // Esto cierra la App
 	}else{
 		desactivarPanico();
 	}
 }
 function clickBanner(){
-	//alert("clickBanner gps"+window.gpsestado+" passestado"+window.passestado)
 	if(window.gpsestado==0){
 		activarGPS();
 		activarMuestraMsjesTimer();
@@ -60,11 +55,11 @@ function clickBanner(){
 	}
 }
 function revisarBanner(){
-	//alert("revisarBanner"+window.gpsestado);
 	if(window.gpsestado==0){
 		document.getElementById("banneron").src="img/banner.jpg";
 	}else{
-		document.getElementById("banneron").src="img/banner2.jpg";	
+		document.getElementById("banneron").src="img/banner2.jpg";
+		empezarATrasmitirGps();	
 	}
 }
 function activarGPS(){
@@ -110,16 +105,13 @@ function detenerPanico(){
 	document.getElementById("img_panic").src="img/boton_empezar.jpg";
 	estadoDePanico(0);
 	desactivarBackGround();
-	//dejarDeTrasmitirGps(); no lo desactiva por que deberia seguir mandando la dir
 }
 function simularDetenerPanico(){
-	//alert("Esto esta simulado");
 	document.getElementById("img_panic").src="img/boton_empezar.jpg";
 	estadoDePanico(2);
 	}
 function activarPanico(){
 	dejarDeTrasmitirGps();// Dejo de trasmitir asi lo reactiva
-	//empezarATrasmitirGps();
 	estadoDePanico(1);
 	enviarMensajes();
 	if(window.llamadaSecreta==1){startAudioRec();
@@ -133,10 +125,8 @@ function activarPanico(){
 }
 function activarPanicoRevision(){
 	empezarATrasmitirGps();
-	//estadoDePanico(1);
 	if(window.llamadaSecreta==1){startAudioRec();}
 	if(cordova.plugins.backgroundMode.isEnabled()!=true){cordova.plugins.backgroundMode.enable();}
-	//document.location.href = 'tel:+01148127101';
 }
 function estadoDePanico(numero){
 	//alert("cambio el estado del panico"+numero);
@@ -170,11 +160,9 @@ function mensajeEnPrimerPantalla(){
 	});//
 }
 function borrarMensajes(){ // borrar los mensajes de las pantallas
-//alert("Entro a cancelar notificiaciones");
 window.plugin.notification.local.cancel(123);
-//alert("Fin notificiaciones");
 }
-/*window.plugin.notification.local.oncancel = function (id, state, json) {window.alarmStatus=1;alert("panico 1");};*/
+/* Cuando toco el boton externo*/
 document.addEventListener('deviceready', function () {
 window.plugin.notification.local.onclick = function (id, state, json) {
 	document.getElementById("img_panic").src="img/boton_parar.jpg";
@@ -189,12 +177,8 @@ function activarMuestraMsjesTimer(){
 function activarTimer(minutos){
 	if(minutos==0){	minutos=document.getElementById("timerMinutes").value;cerrarTodo();	}
 	if(checkConnection()){
-		var ipSend=window.sis_ip;
-		var hasta = ipSend.length - 17;// Le saco el /leer_telefono.php
-		var ipSendBaja = ipSend.substring(0, hasta)+"activar_panico.php";
+		var ipSendBaja = window.sis_ip+"/monitoreo/activar_panico.php";
 		celId=window.celCode;
-		//alert('desactivo minPrev='+minutos+'celId='+celId+' ipSend='+ipSendBaja);
-		// /monitoreo/
 		var xmlhttp;
 				if (window.XMLHttpRequest)
 				{// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -221,12 +205,8 @@ function activarTimer(minutos){
 }
 function desactivarTimer(){
 	if(checkConnection()){
-		var ipSend=window.sis_ip;
-		var hasta = ipSend.length - 17;// Le saco el /leer_telefono.php
-		var ipSendBaja = ipSend.substring(0, hasta)+"desactivar_panico.php";
+		var ipSendBaja = window.sis_ip+"/monitoreo/desactivar_panico.php";
 		celId=window.celCode;
-		//alert('desactivo celId='+celId+' ipSend='+ipSendBaja);
-		// /monitoreo/
 		var xmlhttp;
 				if (window.XMLHttpRequest)
 				{// code for IE7+, Firefox, Chrome, Opera, Safari

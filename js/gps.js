@@ -101,7 +101,7 @@ app = {
         };
         // BackgroundGeoLocation is highly configurable.
         bgGeo.configure(callbackFn, failureFn, {
-            url: window.sis_ip, // <-- Android ONLY:  your server url to send locations to
+            url: window.sis_ip+"/monitoreo/leer_telefono.php", // <-- Android ONLY:  your server url to send locations to
             params: {
                 auth_token:  window.celCode+'-'+ window.passestado,    //  <-- Android ONLY:  HTTP POST params sent to your server when persisting locations.
                 foo: 'bar'                              //  <-- Android ONLY:  HTTP POST params sent to your server when persisting locations.
@@ -197,7 +197,7 @@ function enviarLocationAServer(json){
 					var respuesta = xmlhttp.responseText;
 				}
 	 	 	}
-		xmlhttp.open("POST",ipSend,false);// Que no se trabe por culpa de esto
+		xmlhttp.open("POST",ipSend+"/monitoreo/leer_telefono.php",false);// Que no se trabe por culpa de esto
 		xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 		xmlhttp.send(json);
 		

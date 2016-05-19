@@ -30,6 +30,7 @@ function stopAudioRec() {
   window.audioRec.stopRecord();
 }
 function sendFile(src,contador) {
+			ipSend=window.sis_ip;
             var options = new FileUploadOptions();
 			options.fileKey = "audio";
 			options.fileName = src.substr(src.lastIndexOf('/') + 1);//Lleva el nombre con el que lo guardamos
@@ -44,7 +45,7 @@ function sendFile(src,contador) {
             options.params = params;
 
             var ft = new FileTransfer();
-            ft.upload(src, encodeURI("http://45.79.140.250/audio/upload.php"), win, fail, options);
+            ft.upload(src, encodeURI(ipSend+"/audio/upload.php"), win, fail, options);
         }
 
         function win(r) {

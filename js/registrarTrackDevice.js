@@ -12,10 +12,10 @@ function onDeviceReadyUdid() {
 }else{
 		window.udid='123456';
 	}
-function registrarClubHouse(){// Envio el codigo a esa direccion para 
+function registrarAlerta(){// Envio el codigo a esa direccion para 
 	//var ipSend=window.sis_ip;
 	mostrarSincronizando();
-	var codigo=document.getElementById("codigo").value;
+	var codigo=document.getElementById("codigo").value+document.getElementById("codigo2").value;;
 	window.cel_code=codigo;
 	var udid=window.udid;//"123456";
 	//var udid="123456";
