@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='utf-8' ?>
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.TrackDevice"
+        id        = "com.DeviceTrack"
         version   = "1.0.0">
 
-    <name>Track Device</name>
+    <name>Device Track</name>
 
     <description>
-        Track Device App, sin explicacion por el momento
+        Device Track App, es una App de Seguimiento
     </description>
 
     <author href="http://www.swci.com.ar" email="info@swci.com.ar">
