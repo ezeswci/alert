@@ -36,14 +36,15 @@ function apretoPanico(elemento){
 		desactivarPanico();
 	}
 }
+// Hago click sobre el banner
 function clickBanner(){
 	if(window.gpsestado==0){
 		activarGPS();
 		activarMuestraMsjesTimer();
 	}else{
 		if(window.passestado==0){
-		desactivarGPS();
-		desactivarTimer();
+			desactivarGPS();
+			borrarMensajes();
 		}
 		else{
 			if(window.passestado==1){
@@ -68,8 +69,9 @@ function activarGPS(){
 	estadoDeGPS(1);
 }
 function desactivarGPS(){
-	estadoDeGPS(0);
+	desactivarTimer();
 	borrarMensajes();
+	estadoDeGPS(0);
 	dejarDeTrasmitirGps();
 	// Si el panico esta activado tiene que desactivar el panico, sino solo apaga el gps
 }
@@ -176,6 +178,7 @@ function activarMuestraMsjesTimer(){
 }
 function activarTimer(minutos){
 	if(minutos==0){	minutos=document.getElementById("timerMinutes").value;cerrarTodo();	}
+	minutos='';
 	if(checkConnection()){
 		var ipSendBaja = window.sis_ip+"/monitoreo/activar_panico.php";
 		celId=window.celCode;
