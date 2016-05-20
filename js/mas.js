@@ -12,7 +12,7 @@ function onDeviceReady() {
     initClickCB();
 }
 function sendMail() {
-	window.plugins.socialsharing.share('¡Te%20recomiendo%20el%20App%20Device%20Track%20!\nDescargalo%20y%20vivi%20acompañado');
+	window.plugins.socialsharing.share('¡Te recomiendo el App Device Track ! Descargalo y vivi acompañado');
 }
 
 function initClickCB() {
